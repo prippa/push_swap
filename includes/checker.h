@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prippa <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/28 19:44:27 by prippa            #+#    #+#             */
-/*   Updated: 2018/02/28 19:44:28 by prippa           ###   ########.fr       */
+/*   Created: 2018/03/01 18:21:41 by prippa            #+#    #+#             */
+/*   Updated: 2018/03/01 18:21:42 by prippa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef CHECKER_H
+# define CHECKER_H
 
-int		main(int argc, char **argv)
-{
-	ft_printf("push_swap\n");
-	return (0);
-}
+# include "libft.h"
+# include "ft_printf.h"
+
+#endif

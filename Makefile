@@ -10,56 +10,86 @@
 #                                                                              #
 # **************************************************************************** #
 
-PUSH_SWAP		=	push_swap
+PUSH_SWAP			=	push_swap
+CHECKER				=	checker
 
-#FLAGS			= 	-Wall -Werror -Wextra
+#FLAGS				= 	-Wall -Werror -Wextra
 
-CC				=	gcc
+CC					=	gcc
 
-DIR_LIB			=	./libft/
-LIBFT			=	$(DIR_LIB)libft.a
-DIR_LIB_INC		=	$(DIR_LIB)includes/
-DIR_INC			=	./includes/
-DIR_PUSH_SWAP	=	./push_swap_src/
-DIR_OBJ			= 	./obj/
+DIR_LIB				=	./libft/
+LIBFT				=	$(DIR_LIB)libft.a
+DIR_LIB_INC			=	$(DIR_LIB)includes/
+DIR_INC				=	./includes/
+DIR_PUSH_SWAP		=	./push_swap_src/
+DIR_CHECKER			=	./checker_src/
+DIR_OBJ_PUSH_SWAP	= 	./push_swap_obj/
+DIR_OBJ_CHECKER		= 	./checker_obj/
 
-HEAD_PUSH_SWAP	=	push_swap.h
+HEAD_PUSH_SWAP		=	push_swap.h
+HEAD_CHECKER		=	checker.h
 
-C_PUSH_SWAP		=	main.c
-
-
-OBJ_PUSH_SWAP 	= 	$(C_PUSH_SWAP:.c=.o)
-OBJ 			= 	$(addprefix $(DIR_OBJ), $(OBJ_PUSH_SWAP))
-INC_LIB 		= 	$(addprefix -I, $(DIR_INC) $(DIR_LIB_INC))
-INC_PUSH_SWAP 	= 	$(addprefix $(DIR_INC), $(HEAD_PUSH_SWAP))
+C_PUSH_SWAP			=	main.c
 
 
-all: lib obj $(PUSH_SWAP)
+C_CHECKER			=	main.c
+
+
+LINK_PUSH_SWAP 		= 	$(C_PUSH_SWAP:.c=.o)
+LINK_CHECKER		=	$(C_CHECKER:.c=.o)
+
+OBJ_PUSH_SWAP 		= 	$(addprefix $(DIR_OBJ_PUSH_SWAP), $(LINK_PUSH_SWAP))
+OBJ_CHECKER 		= 	$(addprefix $(DIR_OBJ_CHECKER), $(LINK_CHECKER))
+INC_LIB 			= 	$(addprefix -I, $(DIR_INC) $(DIR_LIB_INC))
+INC_PUSH_SWAP 		= 	$(addprefix $(DIR_INC), $(HEAD_PUSH_SWAP))
+INC_CHECKER 		= 	$(addprefix $(DIR_INC), $(HEAD_CHECKER))
+
+
+all: lib obj $(PUSH_SWAP) $(CHECKER)
 
 obj:
-	@mkdir -p $(DIR_OBJ)
+	@mkdir -p $(DIR_OBJ_PUSH_SWAP)
+	@mkdir -p $(DIR_OBJ_CHECKER)
 
 lib:
 	@make -C $(DIR_LIB)
 
-$(PUSH_SWAP): $(OBJ) $(LIBFT)
-	@$(CC) -o $(PUSH_SWAP) $(OBJ) $(LIBFT)
+#-----------PUSH_SWAP---------------------------------
+$(PUSH_SWAP): $(OBJ_PUSH_SWAP) $(LIBFT)
+	@$(CC) -o $(PUSH_SWAP) $(OBJ_PUSH_SWAP) $(LIBFT)
 	@echo "Compiling" [ $(PUSH_SWAP) ]
 
-$(DIR_OBJ)%.o: $(DIR_PUSH_SWAP)%.c $(INC_PUSH_SWAP)
+$(DIR_OBJ_PUSH_SWAP)%.o: $(DIR_PUSH_SWAP)%.c $(INC_PUSH_SWAP)
 	@$(CC) $(FLAGS) $(INC_LIB) -c -o $@ $<
 	@echo "Linking" [ $< ]
+#-----------------------------------------------------
+
+#-----------CHECKER-----------------------------------
+$(CHECKER): $(OBJ_CHECKER) $(LIBFT)
+	@$(CC) -o $(CHECKER) $(OBJ_CHECKER) $(LIBFT)
+	@echo "Compiling" [ $(CHECKER) ]
+
+$(DIR_OBJ_CHECKER)%.o: $(DIR_CHECKER)%.c $(INC_CHECKER)
+	@$(CC) $(FLAGS) $(INC_LIB) -c -o $@ $<
+	@echo "Linking" [ $< ]
+#-----------------------------------------------------
 
 clean:
-	@rm -rf $(DIR_OBJ)
+	@rm -rf $(DIR_OBJ_PUSH_SWAP)
+	@rm -rf $(DIR_OBJ_CHECKER)
 	@echo "Clean [ obj files push_swap ]"
+	@echo "Clean [ obj files checker ]"
 	@make -C $(DIR_LIB) clean
 
 fclean:
-	@rm -rf $(DIR_OBJ)
+	@rm -rf $(DIR_OBJ_PUSH_SWAP)
+	@rm -rf $(DIR_OBJ_CHECKER)
 	@echo "Clean [ obj files push_swap ]"
+	@echo "Clean [ obj files checker ]"
 	@rm -f $(PUSH_SWAP)
+	@rm -f $(CHECKER)
 	@echo "Clean" [ $(PUSH_SWAP) ]
+	@echo "Clean" [ $(CHECKER) ]
 	@make -C $(DIR_LIB) fclean
 
 re: fclean all

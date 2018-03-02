@@ -5,15 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: prippa <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/28 19:44:27 by prippa            #+#    #+#             */
-/*   Updated: 2018/02/28 19:44:28 by prippa           ###   ########.fr       */
+/*   Created: 2018/03/01 18:20:08 by prippa            #+#    #+#             */
+/*   Updated: 2018/03/01 18:20:10 by prippa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 int		main(int argc, char **argv)
 {
-	ft_printf("push_swap\n");
+	ft_printf("checker\n");
 	return (0);
 }
