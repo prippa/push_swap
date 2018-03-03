@@ -1,0 +1,9 @@
+checker
+push_swap
+checker_obj
+push_swap_obj
+libft/obj
+*.a
+*.o
+cmake-build-debug
+.idea

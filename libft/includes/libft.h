@@ -19,6 +19,8 @@
 
 # define BUFF_SIZE 32
 # define ABS(x) (((x) < 0) ? -(x) : (x))
+# define MAXINT 2147483647
+# define MININT -2147483648
 
 typedef	struct		s_gnl
 {

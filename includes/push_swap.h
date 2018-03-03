@@ -16,4 +16,23 @@
 # include "libft.h"
 # include "ft_printf.h"
 
+typedef	struct		s_stack
+{
+	int				n;
+	struct s_stack	*next;
+}					t_stack;
+
+typedef	struct		s_push_swap
+{
+	t_stack			*a;
+	t_stack			*b;
+}					t_push_swap;
+
+void				ps_init(t_push_swap *ps);
+
+void				ps_free(t_push_swap *ps);
+
+void				ps_free_error_exit(t_push_swap *ps);
+void				ps_free_exit(t_push_swap *ps);
+
 #endif

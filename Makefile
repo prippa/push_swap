@@ -23,11 +23,11 @@ DIR_LIB_INC			=	$(DIR_LIB)includes/
 DIR_INC				=	./includes/
 DIR_PUSH_SWAP		=	./push_swap_src/
 DIR_CHECKER			=	./checker_src/
+DIR_SRC				=	./src/
 DIR_OBJ_PUSH_SWAP	= 	./push_swap_obj/
 DIR_OBJ_CHECKER		= 	./checker_obj/
 
 HEAD_PUSH_SWAP		=	push_swap.h
-HEAD_CHECKER		=	checker.h
 
 C_PUSH_SWAP			=	main.c
 
@@ -35,14 +35,17 @@ C_PUSH_SWAP			=	main.c
 C_CHECKER			=	main.c
 
 
+C_SRC				=	ps_trash.c ps_init.c ps_free.c
+
+
 LINK_PUSH_SWAP 		= 	$(C_PUSH_SWAP:.c=.o)
 LINK_CHECKER		=	$(C_CHECKER:.c=.o)
+LINK_SRC			=	$(C_SRC:.c=.o)
 
-OBJ_PUSH_SWAP 		= 	$(addprefix $(DIR_OBJ_PUSH_SWAP), $(LINK_PUSH_SWAP))
-OBJ_CHECKER 		= 	$(addprefix $(DIR_OBJ_CHECKER), $(LINK_CHECKER))
+OBJ_PUSH_SWAP 		= 	$(addprefix $(DIR_OBJ_PUSH_SWAP), $(LINK_PUSH_SWAP) $(LINK_SRC))
+OBJ_CHECKER 		= 	$(addprefix $(DIR_OBJ_CHECKER), $(LINK_CHECKER) $(LINK_SRC))
 INC_LIB 			= 	$(addprefix -I, $(DIR_INC) $(DIR_LIB_INC))
 INC_PUSH_SWAP 		= 	$(addprefix $(DIR_INC), $(HEAD_PUSH_SWAP))
-INC_CHECKER 		= 	$(addprefix $(DIR_INC), $(HEAD_CHECKER))
 
 
 all: lib obj $(PUSH_SWAP) $(CHECKER)
@@ -62,6 +65,10 @@ $(PUSH_SWAP): $(OBJ_PUSH_SWAP) $(LIBFT)
 $(DIR_OBJ_PUSH_SWAP)%.o: $(DIR_PUSH_SWAP)%.c $(INC_PUSH_SWAP)
 	@$(CC) $(FLAGS) $(INC_LIB) -c -o $@ $<
 	@echo "Linking" [ $< ]
+
+$(DIR_OBJ_PUSH_SWAP)%.o: $(DIR_SRC)%.c $(INC_PUSH_SWAP)
+	@$(CC) $(FLAGS) $(INC_LIB) -c -o $@ $<
+	@echo "Linking" [ $< ]
 #-----------------------------------------------------
 
 #-----------CHECKER-----------------------------------
@@ -69,7 +76,11 @@ $(CHECKER): $(OBJ_CHECKER) $(LIBFT)
 	@$(CC) -o $(CHECKER) $(OBJ_CHECKER) $(LIBFT)
 	@echo "Compiling" [ $(CHECKER) ]
 
-$(DIR_OBJ_CHECKER)%.o: $(DIR_CHECKER)%.c $(INC_CHECKER)
+$(DIR_OBJ_CHECKER)%.o: $(DIR_CHECKER)%.c $(INC_PUSH_SWAP)
+	@$(CC) $(FLAGS) $(INC_LIB) -c -o $@ $<
+	@echo "Linking" [ $< ]
+
+$(DIR_OBJ_CHECKER)%.o: $(DIR_SRC)%.c $(INC_PUSH_SWAP)
 	@$(CC) $(FLAGS) $(INC_LIB) -c -o $@ $<
 	@echo "Linking" [ $< ]
 #-----------------------------------------------------

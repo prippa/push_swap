@@ -10,10 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
 int		main(int argc, char **argv)
 {
-	ft_printf("checker\n");
+	t_push_swap ps;
+
+	ps_init(&ps);
+	ft_printf("OK\n");
 	return (0);
 }
