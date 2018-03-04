@@ -4,4 +4,6 @@ void	ps_init(t_push_swap *ps)
 {
 	ps->a = NULL;
 	ps->b = NULL;
+	ps->op = NULL;
+	ps->buf = NULL;
 }

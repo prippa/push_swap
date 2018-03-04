@@ -32,10 +32,12 @@ HEAD_PUSH_SWAP		=	push_swap.h
 C_PUSH_SWAP			=	main.c
 
 
-C_CHECKER			=	main.c
+C_CHECKER			=	main.c ch_parser.c
 
 
-C_SRC				=	ps_trash.c ps_init.c ps_free.c
+C_SRC				=	ps_trash.c ps_init.c ps_free.c ps_parser.c\
+						ps_stack_push_pop.c ps_stack_revers.c\
+						ps_print_operation.c
 
 
 LINK_PUSH_SWAP 		= 	$(C_PUSH_SWAP:.c=.o)

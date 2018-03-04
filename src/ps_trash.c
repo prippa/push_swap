@@ -2,13 +2,8 @@
 
 void				ps_free_error_exit(t_push_swap *ps)
 {
-	ft_putstr_fd("Error", 2);
+	ft_putstr_fd("Error\n", 2);
 	ps_free(ps);
-	exit(0);
-}
-
-void				ps_free_exit(t_push_swap *ps)
-{
-	ps_free(ps);
+	system("leaks checker");
 	exit(0);
 }

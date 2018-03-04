@@ -15,4 +15,8 @@ void		ps_free(t_push_swap *ps)
 		ps_stack_free(&ps->a);
 	if (ps->b)
 		ps_stack_free(&ps->b);
+	if (ps->op)
+		ps_stack_free(&ps->op);
+	if (ps->buf)
+		ft_str_free(&ps->buf);
 }

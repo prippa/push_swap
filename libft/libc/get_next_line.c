@@ -12,134 +12,133 @@
 
 #include "libft.h"
 
-static int		fill_str(t_gnl **file)
+void		*ft_memjoin(void *des, int counter, void *add, int value)
 {
-	int		ret;
-	char	buf[BUFF_SIZE + 1];
-	char	*tmp_buf;
-	t_gnl	*tmp;
+	void	*join;
+	void	*tmp;
 
-	tmp = *file;
-	if (!tmp->str && !(tmp->str = ft_strdup("")))
-		return (-1);
-	while ((ret = read(tmp->fd, buf, BUFF_SIZE)) > 0)
+	join = (void *)malloc((counter + value + 1));
+	if (!(des))
 	{
-		buf[ret] = '\0';
-		if (!(tmp_buf = (char*)malloc(sizeof(char)
-			* ((ret + ft_strlen(tmp->str)) + 1))))
-			return (-1);
-		ft_strcpy(tmp_buf, tmp->str);
-		ft_strcat(tmp_buf, buf);
-		free(tmp->str);
-		if (!(tmp->str = ft_strdup(tmp_buf)))
-			return (-1);
-		free(tmp_buf);
-		if (ft_strchr(buf, '\n'))
-			break ;
+		join = ft_memcpy(join, add, value);
+		((unsigned char *)join)[counter + value] = '\0';
+		return (join);
 	}
-	return (1);
-}
-
-static int		if_str_end(t_gnl **file, int i)
-{
-	char	*buf;
-	t_gnl	*tmp;
-
-	tmp = *file;
-	if ((i - tmp->start) > 0 && !(tmp->str[i]))
+	else if (!add)
 	{
-		if (!(buf = ft_strsub(tmp->str, tmp->start, (size_t)(i - tmp->start))))
-			return (-1);
-		free(tmp->str);
-		if (!(tmp->str = ft_strdup(buf)))
-			return (-1);
-		free(buf);
-		if (fill_str(&tmp) == -1)
-			return (-1);
-		tmp->start = 0;
-		i = tmp->start;
-		while (tmp->str[i] && tmp->str[i] != '\n')
-			i++;
+		join = ft_memcpy(join, des, counter);
+		((unsigned char *)join)[counter] = '\0';
 	}
-	return (i);
-}
-
-static int		line_valid(t_gnl **file)
-{
-	int		i;
-	t_gnl	*tmp;
-
-	tmp = *file;
-	if (!tmp->str && fill_str(&tmp) == -1)
-		return (-1);
-	if (!(tmp->str[tmp->start]))
-	{
-		free(tmp->str);
-		tmp->str = NULL;
-		if (fill_str(&tmp) == -1)
-			return (-1);
-		tmp->start = 0;
-	}
-	if (tmp->str[tmp->start] == '\n')
-		return (1);
-	i = tmp->start;
-	while (tmp->str[i] && tmp->str[i] != '\n')
-		i++;
-	i = if_str_end(&tmp, i);
-	i -= tmp->start;
-	return (i);
-}
-
-static int		get_line(t_gnl **file, char **line)
-{
-	int		i;
-	t_gnl	*tmp;
-
-	tmp = *file;
-	i = line_valid(&tmp);
-	if (i == 0)
-		return (0);
-	else if (i < 0)
-		return (-1);
-	if (tmp->str[tmp->start] == '\n')
-	{
-		if (!(*line = ft_strdup("")))
-			return (-1);
-		tmp->start++;
-		return (1);
-	}
-	if (!(*line = ft_strsub(tmp->str, tmp->start, (size_t)i)))
-		return (-1);
-	if (tmp->str[i])
-		tmp->start += (i + 1);
 	else
-		tmp->start += i;
-	return (1);
+	{
+		tmp = join;
+		ft_memcpy(join, des, counter);
+		tmp += counter;
+		ft_memcpy(tmp, add, value);
+		((unsigned char *)join)[counter + value] = '\0';
+	}
+	free(des);
+	return (join);
 }
 
-int				get_next_line(int const fd, char **line)
+int			is_nl(void **rest, int *rm, void **gline, int *counter)
 {
-	static t_gnl	*file;
-	t_gnl			*tmp;
+	int		dif;
+	void	*tmp;
 
-	if (fd < 0 || !line || read(fd, 0, 0) < 0 || BUFF_SIZE <= 0)
-		return (-1);
-	tmp = file;
-	while (tmp)
+	if (ft_memchr(*rest, '\n', *rm))
 	{
-		if (tmp->fd == fd)
+		dif = ((ft_memchr(*rest, '\n', *rm) - *rest) + 1);
+		*gline = ft_memjoin(*gline, *counter, *rest, (dif - 1));
+		*counter += dif;
+		if ((*rm = (*rm - dif)))
+		{
+			tmp = *rest;
+			*rest = ft_memjoin(NULL, 0, (*rest + dif), *rm);
+			ft_bzero(tmp, (*rm + dif));
+			free(tmp);
+		}
+		else
+			ft_memdel(rest);
+		return (1);
+	}
+	*gline = ft_memjoin(*gline, *counter, *rest, *rm);
+	*counter += *rm;
+	ft_memdel(rest);
+	return (0);
+}
+
+t_gnl	*lst_fd(void *rest, int rm, int fd)
+{
+	t_gnl	*newlist;
+
+	newlist = (t_gnl *)malloc(sizeof(t_gnl));
+	if (newlist == NULL)
+		return (NULL);
+	if (rest == NULL)
+	{
+		newlist->rest = NULL;
+		newlist->rm = 0;
+		newlist->fd = fd;
+	}
+	else
+	{
+		newlist->rest = (void *)malloc(sizeof(rest));
+		if (newlist->rest == NULL)
+			return (NULL);
+		ft_memcpy((newlist->rest), rest, rm);
+		newlist->rm = rm;
+		newlist->fd = fd;
+	}
+	newlist->next = NULL;
+	return (newlist);
+}
+
+t_gnl	*get_right_list(t_gnl *lst, int fd)
+{
+	t_gnl	*l;
+
+	while (lst)
+	{
+		if ((lst)->fd == fd)
+		{
+			l = lst;
+			return (l);
+		}
+		if ((lst)->next)
+			lst = (lst)->next;
+		else
 			break ;
-		tmp = tmp->next;
 	}
-	if (!tmp)
-	{
-		if (!(tmp = (t_gnl*)malloc(sizeof(*tmp))))
-			return (-1);
-		tmp->str = NULL;
-		tmp->fd = fd;
-		tmp->start = 0;
-		tmp->next = file;
-		file = tmp;
-	}
-	return (get_line(&tmp, &(*line)));
+	(lst)->next = lst_fd(NULL, 0, fd);
+	l = (lst)->next;
+	return (l);
+}
+
+int			get_next_line(const int fd, char **line)
+{
+	static t_gnl	*pl;
+	t_gnl			*l;
+	int				counter;
+	unsigned char	tmp[BUFF_SIZE];
+	void			*gline;
+
+	if ((fd < 0) || !(line) || read(fd, 0, 0) < 0 || BUFF_SIZE <= 0)
+		return (-1);
+	if (!(pl))
+		pl = lst_fd(NULL, 0, fd);
+	l = get_right_list(pl, fd);
+	counter = 0;
+	gline = NULL;
+	if (!(l->rest && is_nl(&(l->rest), &(l->rm), &gline, &counter)))
+		while ((l->rm = read(fd, tmp, BUFF_SIZE)))
+		{
+			if (l->rm < 0)
+				return (-1);
+			l->rest = ft_memjoin(l->rest, 0, tmp, l->rm);
+			if (is_nl(&(l->rest), &(l->rm), &gline, &counter))
+				break ;
+		}
+	*line = (char *)gline;
+	return ((counter > 0) ? 1 : 0);
 }

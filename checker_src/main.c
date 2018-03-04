@@ -12,11 +12,28 @@
 
 #include "push_swap.h"
 
+void	print_stack(t_stack *stk)
+{
+	ft_putendl("----------Stack----------");
+	while (stk)
+	{
+		ft_printf("%d\n", stk->n);
+		stk = stk->next;
+	}
+	ft_putendl("-------------------------");
+}
+
 int		main(int argc, char **argv)
 {
 	t_push_swap ps;
 
 	ps_init(&ps);
-	ft_printf("OK\n");
+	if (argc > 1)
+	{
+		ps_parser(&ps, argv + 1);
+		ch_parser(&ps);
+		print_stack(ps.a);
+	}
+	system("leaks checker");
 	return (0);
 }

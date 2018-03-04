@@ -22,11 +22,12 @@
 # define MAXINT 2147483647
 # define MININT -2147483648
 
-typedef	struct		s_gnl
+typedef struct		s_gnl
 {
-	char			*str;
+	void			*rest;
+	void			*start;
+	int				rm;
 	int				fd;
-	size_t			start;
 	struct s_gnl	*next;
 }					t_gnl;
 
@@ -119,6 +120,7 @@ int					ft_nbrlen(long long int nb);
 void				ft_putarr(char **arr);
 void				ft_putarr_fd(char **arr, int fd);
 int					ft_atoi_base(const char *str, int base);
+long long int		ft_atoi_max(char *str);
 void				ft_clear(void);
 
 #endif
