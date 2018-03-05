@@ -37,7 +37,9 @@ C_CHECKER			=	main.c ch_parser.c
 
 C_SRC				=	ps_trash.c ps_init.c ps_free.c ps_parser.c\
 						ps_stack_push_pop.c ps_stack_revers.c\
-						ps_print_operation.c
+						ps_print_operation.c\
+						ps_op_sa_sb_ss.c ps_op_pa_pb.c\
+						ps_op_ra_rb_rr.c ps_op_rra_rrb_rrr.c
 
 
 LINK_PUSH_SWAP 		= 	$(C_PUSH_SWAP:.c=.o)

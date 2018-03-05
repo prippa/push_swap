@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_stack_push_pop.c                                :+:      :+:    :+:   */
+/*   ps_op_sa_sb_ss.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prippa <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/05 13:03:59 by prippa            #+#    #+#             */
-/*   Updated: 2018/03/05 13:04:01 by prippa           ###   ########.fr       */
+/*   Created: 2018/03/05 13:36:27 by prippa            #+#    #+#             */
+/*   Updated: 2018/03/05 13:36:30 by prippa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ps_stack_push(t_stack **stk, int n)
+void	ps_op_swap(t_stack **stk)
 {
-	t_stack *new;
+	int tmp;
 
-	if (!(new = (t_stack *)malloc(sizeof(t_stack))))
-		exit(0);
-	new->n = n;
-	new->next = *stk;
-	*stk = new;
+	if (!(*stk) || !(*stk)->next)
+		return ;
+	tmp = (*stk)->n;
+	(*stk)->n = (*stk)->next->n;
+	(*stk)->next->n = tmp;
 }
 
-void	ps_stack_pop(t_stack **stk)
+void	ps_op_swap_duo(t_stack **a, t_stack **b)
 {
-	t_stack *tmp;
-
-	tmp = *stk;
-	*stk = (*stk)->next;
-	free(tmp);
+	ps_op_swap(a);
+	ps_op_swap(b);
 }

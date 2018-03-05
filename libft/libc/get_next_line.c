@@ -68,7 +68,7 @@ int			is_nl(void **rest, int *rm, void **gline, int *counter)
 	return (0);
 }
 
-t_gnl	*lst_fd(void *rest, int rm, int fd)
+t_gnl		*lst_fd(void *rest, int rm, int fd)
 {
 	t_gnl	*newlist;
 
@@ -94,7 +94,7 @@ t_gnl	*lst_fd(void *rest, int rm, int fd)
 	return (newlist);
 }
 
-t_gnl	*get_right_list(t_gnl *lst, int fd)
+t_gnl		*get_right_list(t_gnl *lst, int fd)
 {
 	t_gnl	*l;
 

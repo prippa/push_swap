@@ -15,6 +15,5 @@
 int		main(int argc, char **argv)
 {
 	ft_printf("push_swap\n");
-    return (0);
+	return (0);
 }
-

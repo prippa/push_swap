@@ -39,8 +39,17 @@ typedef	struct		s_push_swap
 	t_stack			*a;
 	t_stack			*b;
 	t_stack			*op;
-	char 			*buf;
+	char			*buf;
+	char			**arr;
 }					t_push_swap;
+
+void				ps_op_swap(t_stack **stk);
+void				ps_op_swap_duo(t_stack **a, t_stack **b);
+void				ps_op_push(t_stack **take, t_stack **put);
+void				ps_op_rotate(t_stack **stk);
+void				ps_op_rotate_duo(t_stack **a, t_stack **b);
+void				ps_op_reverse_rotate(t_stack **stk);
+void				ps_op_reverse_rotate_duo(t_stack **a, t_stack **b);
 
 void				ch_parser(t_push_swap *ps);
 

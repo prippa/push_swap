@@ -12,15 +12,15 @@
 
 #include "push_swap.h"
 
-void	print_stack(t_stack *stk)
+void	print_stack(t_stack *stk, char name)
 {
-	ft_putendl("----------Stack----------");
+	ft_printf("----------Stack %c----------\n", name);
 	while (stk)
 	{
 		ft_printf("%d\n", stk->n);
 		stk = stk->next;
 	}
-	ft_putendl("-------------------------");
+	ft_putendl("---------------------------");
 }
 
 int		main(int argc, char **argv)
@@ -31,8 +31,12 @@ int		main(int argc, char **argv)
 	if (argc > 1)
 	{
 		ps_parser(&ps, argv + 1);
-		ch_parser(&ps);
-		print_stack(ps.a);
+		//ch_parser(&ps);
+		print_stack(ps.a, 'a');
+		ps_op_reverse_rotate(&ps.a);
+		print_stack(ps.a, 'a');
+		ps_op_rotate(&ps.a);
+		print_stack(ps.a, 'a');
 	}
 	system("leaks checker");
 	return (0);
