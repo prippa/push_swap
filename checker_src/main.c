@@ -12,32 +12,44 @@
 
 #include "push_swap.h"
 
-void	print_stack(t_stack *stk, char name)
+//void	print_stack(t_stack *stk, char name)
+//{
+//	ft_printf("----------Stack %c----------\n", name);
+//	while (stk)
+//	{
+//		ft_printf("%d\n", stk->n);
+//		stk = stk->next;
+//	}
+//	ft_putendl("---------------------------");
+//}
+
+static void	ch_solve(t_push_swap *ps)
 {
-	ft_printf("----------Stack %c----------\n", name);
-	while (stk)
+	t_stack *tmp;
+
+	tmp = ps->op;
+	while (tmp)
 	{
-		ft_printf("%d\n", stk->n);
-		stk = stk->next;
+		ps_make_operation(ps, tmp->n);
+		tmp = tmp->next;
 	}
-	ft_putendl("---------------------------");
 }
 
-int		main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
 	t_push_swap ps;
 
-	ps_init(&ps);
 	if (argc > 1)
 	{
+		ps_init(&ps);
 		ps_parser(&ps, argv + 1);
-		//ch_parser(&ps);
-		print_stack(ps.a, 'a');
-		ps_op_reverse_rotate(&ps.a);
-		print_stack(ps.a, 'a');
-		ps_op_rotate(&ps.a);
-		print_stack(ps.a, 'a');
+		ch_parser(&ps);
+		ch_solve(&ps);
+		if (ps_stack_is_sorted(ps.a))
+			ft_putstr("OK\n");
+		else
+			ft_putstr("KO\n");
+		ps_free(&ps);
 	}
-	system("leaks checker");
 	return (0);
 }

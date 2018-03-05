@@ -43,6 +43,8 @@ typedef	struct		s_push_swap
 	char			**arr;
 }					t_push_swap;
 
+void				ps_make_operation(t_push_swap *ps, int op);
+
 void				ps_op_swap(t_stack **stk);
 void				ps_op_swap_duo(t_stack **a, t_stack **b);
 void				ps_op_push(t_stack **take, t_stack **put);
@@ -63,8 +65,8 @@ void				ps_free(t_push_swap *ps);
 
 void				ps_stack_push(t_stack **stk, int n);
 void				ps_stack_pop(t_stack **stk);
-
 void				ps_stack_revers(t_stack **stk);
+int 				ps_stack_is_sorted(t_stack *stk);
 
 void				ps_free_error_exit(t_push_swap *ps);
 
