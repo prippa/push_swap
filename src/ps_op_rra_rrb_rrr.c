@@ -12,15 +12,15 @@
 
 #include "push_swap.h"
 
-void	ps_op_reverse_rotate(t_stack **stk)
+int		ps_op_reverse_rotate(t_stack **stk)
 {
 	int		up;
 	int		pull;
 	int		last;
 	t_stack	*tmp;
 
-	if (!(*stk))
-		return ;
+	if (!(*stk) && !((*stk)->next))
+		return (0);
 	tmp = *stk;
 	last = tmp->n;
 	pull = tmp->n;
@@ -34,10 +34,11 @@ void	ps_op_reverse_rotate(t_stack **stk)
 		tmp = tmp->next;
 	}
 	(*stk)->n = last;
+	return (1);
 }
 
-void	ps_op_reverse_rotate_duo(t_stack **a, t_stack **b)
+void	ps_op_reverse_rotate_duo(t_push_swap *ps)
 {
-	ps_op_reverse_rotate(a);
-	ps_op_reverse_rotate(b);
+	ps->flag_is_op_a = ps_op_reverse_rotate(&ps->a);
+	ps->flag_is_op_b = ps_op_reverse_rotate(&ps->b);
 }

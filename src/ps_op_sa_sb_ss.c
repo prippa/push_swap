@@ -12,19 +12,20 @@
 
 #include "push_swap.h"
 
-void	ps_op_swap(t_stack **stk)
+int		ps_op_swap(t_stack **stk)
 {
 	int tmp;
 
 	if (!(*stk) || !(*stk)->next)
-		return ;
+		return (0);
 	tmp = (*stk)->n;
 	(*stk)->n = (*stk)->next->n;
 	(*stk)->next->n = tmp;
+	return (1);
 }
 
-void	ps_op_swap_duo(t_stack **a, t_stack **b)
+void	ps_op_swap_duo(t_push_swap *ps)
 {
-	ps_op_swap(a);
-	ps_op_swap(b);
+	ps->flag_is_op_a = ps_op_swap(&ps->a);
+	ps->flag_is_op_b = ps_op_swap(&ps->b);
 }

@@ -12,6 +12,28 @@
 
 #include "push_swap.h"
 
+static void	ch_solve(t_push_swap *ps)
+{
+	t_stack *tmp;
+
+	tmp = ps->op;
+	while (tmp)
+	{
+		ps->flag_is_op_a = 0;
+		ps->flag_is_op_b = 0;
+		ps_make_operation(ps, tmp->n);
+		if (ps->vis.flag_vis || ps->vis.flag_col)
+		{
+			ps->vis.op = tmp->n;
+			ch_vis_get_op_num(ps);
+			ch_visualize(ps);
+			ps->vis.flag_op_a = 0;
+			ps->vis.flag_op_b = 0;
+		}
+		tmp = tmp->next;
+	}
+}
+
 static int	ch_get_bonus_flags(t_push_swap *ps, char **argv)
 {
 	int i;
@@ -24,27 +46,10 @@ static int	ch_get_bonus_flags(t_push_swap *ps, char **argv)
 		if (!ft_strcmp(argv[i], "-v"))
 			ps->vis.flag_vis = 1;
 		else if (!ft_strcmp(argv[i], "-c"))
-			ps->vis.flag_color = 1;
+			ps->vis.flag_col = 1;
 		i++;
 	}
 	return (i);
-}
-
-static void	ch_solve(t_push_swap *ps)
-{
-	t_stack *tmp;
-
-	tmp = ps->op;
-	while (tmp)
-	{
-		ps_make_operation(ps, tmp->n);
-		if (ps->vis.flag_vis || ps->vis.flag_color)
-		{
-			ps->vis.op = tmp->n;
-			ch_visualize(ps);
-		}
-		tmp = tmp->next;
-	}
 }
 
 int			main(int argc, char **argv)

@@ -21,8 +21,9 @@ static void	ps_vis_init(t_visualizer *vis)
 	vis->num_op_b = 0;
 	vis->width_a = 0;
 	vis->width_b = 0;
-	vis->flag_color = 0;
+	vis->flag_col = 0;
 	vis->flag_vis = 0;
+	vis->color = 6;
 }
 
 void		ps_init(t_push_swap *ps)
@@ -32,5 +33,7 @@ void		ps_init(t_push_swap *ps)
 	ps->op = NULL;
 	ps->buf = NULL;
 	ps->arr = NULL;
+	ps->flag_is_op_a = 0;
+	ps->flag_is_op_b = 0;
 	ps_vis_init(&ps->vis);
 }

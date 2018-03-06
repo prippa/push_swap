@@ -31,9 +31,22 @@ static int 	ch_vis_get_width(t_stack *stk)
 	return (width);
 }
 
+static void	ch_identify_color(t_visualizer *vis)
+{
+	if (vis->op == SA || vis->op == SB || vis->op == SS)
+		vis->color = F_CYAN;
+	else if (vis->op == PA || vis->op == PB)
+		vis->color = F_BLUE;
+	else if (vis->op == RA || vis->op == RB || vis->op == RR)
+		vis->color = F_RED;
+	else if (vis->op == RRA || vis->op == RRB || vis->op == RRR)
+		vis->color = F_YELLOW;
+}
+
 void		ch_visualize(t_push_swap *ps)
 {
 	ft_clear();
+	ch_identify_color(&ps->vis);
 	ft_putstr("Operation -> ");
 	ps_print_operation(ps->vis.op, 1);
 	ps->vis.width_a = ch_vis_get_width(ps->a);

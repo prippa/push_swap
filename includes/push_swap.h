@@ -44,7 +44,8 @@ typedef	struct		s_visualizer
 	int				width_a;
 	int				width_b;
 	int				flag_vis;
-	int				flag_color;
+	int				flag_col;
+	int 			color;
 }					t_visualizer;
 
 typedef	struct		s_push_swap
@@ -54,22 +55,24 @@ typedef	struct		s_push_swap
 	t_stack			*op;
 	char			*buf;
 	char			**arr;
+	int 			flag_is_op_a;
+	int 			flag_is_op_b;
 	t_visualizer	vis;
 }					t_push_swap;
 
 void				ch_parser(t_push_swap *ps);
 void				ch_visualize(t_push_swap *ps);
 void				ch_vis_print_stack(t_push_swap *ps, t_stack *a, t_stack *b);
+void				ch_vis_get_op_num(t_push_swap *ps);
 
 void				ps_make_operation(t_push_swap *ps, int op);
-void				ps_op_swap(t_stack **stk);
-void				ps_op_swap_duo(t_stack **a, t_stack **b);
-void				ps_op_push(t_stack **take, t_stack **put);
-void				ps_op_rotate(t_stack **stk);
-void				ps_op_rotate_duo(t_stack **a, t_stack **b);
-void				ps_op_reverse_rotate(t_stack **stk);
-
-void				ps_op_reverse_rotate_duo(t_stack **a, t_stack **b);
+int					ps_op_swap(t_stack **stk);
+void				ps_op_swap_duo(t_push_swap *ps);
+int					ps_op_push(t_stack **take, t_stack **put);
+int					ps_op_rotate(t_stack **stk);
+void				ps_op_rotate_duo(t_push_swap *ps);
+int					ps_op_reverse_rotate(t_stack **stk);
+void				ps_op_reverse_rotate_duo(t_push_swap *ps);
 
 void				ps_print_operation(int op, int fd);
 
