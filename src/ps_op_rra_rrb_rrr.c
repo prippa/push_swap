@@ -19,7 +19,7 @@ int		ps_op_reverse_rotate(t_stack **stk)
 	int		last;
 	t_stack	*tmp;
 
-	if (!(*stk) && !((*stk)->next))
+	if (!(*stk) || !((*stk)->next))
 		return (0);
 	tmp = *stk;
 	last = tmp->n;

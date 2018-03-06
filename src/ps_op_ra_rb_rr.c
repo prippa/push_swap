@@ -17,7 +17,7 @@ int		ps_op_rotate(t_stack **stk)
 	int		first;
 	t_stack	*tmp;
 
-	if (!(*stk) && !((*stk)->next))
+	if (!(*stk) || !((*stk)->next))
 		return (0);
 	tmp = *stk;
 	first = tmp->n;
