@@ -12,16 +12,23 @@
 
 #include "push_swap.h"
 
-//void	print_stack(t_stack *stk, char name)
-//{
-//	ft_printf("----------Stack %c----------\n", name);
-//	while (stk)
-//	{
-//		ft_printf("%d\n", stk->n);
-//		stk = stk->next;
-//	}
-//	ft_putendl("---------------------------");
-//}
+static int	ch_get_bonus_flags(t_push_swap *ps, char **argv)
+{
+	int i;
+
+	i = 1;
+	while (argv[i])
+	{
+		if (argv[i][0] != '-')
+			break ;
+		if (!ft_strcmp(argv[i], "-v"))
+			ps->vis.flag_vis = 1;
+		else if (!ft_strcmp(argv[i], "-c"))
+			ps->vis.flag_color = 1;
+		i++;
+	}
+	return (i);
+}
 
 static void	ch_solve(t_push_swap *ps)
 {
@@ -31,6 +38,11 @@ static void	ch_solve(t_push_swap *ps)
 	while (tmp)
 	{
 		ps_make_operation(ps, tmp->n);
+		if (ps->vis.flag_vis || ps->vis.flag_color)
+		{
+			ps->vis.op = tmp->n;
+			ch_visualize(ps);
+		}
 		tmp = tmp->next;
 	}
 }
@@ -42,10 +54,10 @@ int			main(int argc, char **argv)
 	if (argc > 1)
 	{
 		ps_init(&ps);
-		ps_parser(&ps, argv + 1);
+		ps_parser(&ps, argv + ch_get_bonus_flags(&ps, argv));
 		ch_parser(&ps);
 		ch_solve(&ps);
-		if (ps_stack_is_sorted(ps.a))
+		if (!ps.b && ps_stack_is_sorted(ps.a))
 			ft_putstr("OK\n");
 		else
 			ft_putstr("KO\n");

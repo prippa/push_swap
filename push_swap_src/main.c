@@ -14,6 +14,13 @@
 
 int		main(int argc, char **argv)
 {
-	ft_printf("push_swap\n");
+	t_push_swap ps;
+
+	if (argc > 1)
+	{
+		ps_init(&ps);
+
+	}
+	system("leaks push_swap");
 	return (0);
 }

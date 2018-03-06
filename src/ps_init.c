@@ -12,11 +12,25 @@
 
 #include "push_swap.h"
 
-void	ps_init(t_push_swap *ps)
+static void	ps_vis_init(t_visualizer *vis)
+{
+	vis->op = 0;
+	vis->flag_op_a = 0;
+	vis->flag_op_b = 0;
+	vis->num_op_a = 0;
+	vis->num_op_b = 0;
+	vis->width_a = 0;
+	vis->width_b = 0;
+	vis->flag_color = 0;
+	vis->flag_vis = 0;
+}
+
+void		ps_init(t_push_swap *ps)
 {
 	ps->a = NULL;
 	ps->b = NULL;
 	ps->op = NULL;
 	ps->buf = NULL;
 	ps->arr = NULL;
+	ps_vis_init(&ps->vis);
 }

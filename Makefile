@@ -32,7 +32,8 @@ HEAD_PUSH_SWAP		=	push_swap.h
 C_PUSH_SWAP			=	main.c
 
 
-C_CHECKER			=	main.c ch_parser.c
+C_CHECKER			=	main.c ch_parser.c\
+						ch_visualize.c ch_vis_print_stack.c
 
 
 C_SRC				=	ps_trash.c ps_init.c ps_free.c ps_parser.c\
