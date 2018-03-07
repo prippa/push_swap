@@ -36,7 +36,7 @@ typedef	struct		s_stack
 
 typedef	struct		s_visualizer
 {
-	int 			op;
+	int				op;
 	int				flag_op_a;
 	int				flag_op_b;
 	int				num_op_a;
@@ -45,7 +45,7 @@ typedef	struct		s_visualizer
 	int				width_b;
 	int				flag_vis;
 	int				flag_col;
-	int 			color;
+	int				color;
 }					t_visualizer;
 
 typedef	struct		s_push_swap
@@ -55,8 +55,8 @@ typedef	struct		s_push_swap
 	t_stack			*op;
 	char			*buf;
 	char			**arr;
-	int 			flag_is_op_a;
-	int 			flag_is_op_b;
+	int				flag_is_op_a;
+	int				flag_is_op_b;
 	t_visualizer	vis;
 }					t_push_swap;
 
@@ -85,7 +85,7 @@ void				ps_free(t_push_swap *ps);
 void				ps_stack_push(t_stack **stk, int n);
 void				ps_stack_pop(t_stack **stk);
 void				ps_stack_revers(t_stack **stk);
-int 				ps_stack_is_sorted(t_stack *stk);
+int					ps_stack_is_sorted(t_stack *stk);
 
 void				ps_free_error_exit(t_push_swap *ps);
 

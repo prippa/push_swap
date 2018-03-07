@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ch_vis_get_op_num.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: prippa <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/03/07 12:55:26 by prippa            #+#    #+#             */
+/*   Updated: 2018/03/07 12:55:28 by prippa           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static void	ch_vis_get_swap_num(t_push_swap *ps)
@@ -22,8 +34,8 @@ static void	ch_vis_get_push_or_revrotate_num(t_push_swap *ps)
 		ps->vis.flag_op_a = 1;
 		ps->vis.num_op_a = ps->a->n;
 	}
-	else if ((ps->vis.op == PB || ps->vis.op == RRB || ps->vis.op == RRR)
-			 && ps->flag_is_op_b)
+	if ((ps->vis.op == PB || ps->vis.op == RRB || ps->vis.op == RRR)
+		&& ps->flag_is_op_b)
 	{
 		ps->vis.flag_op_b = 1;
 		ps->vis.num_op_b = ps->b->n;
@@ -32,7 +44,7 @@ static void	ch_vis_get_push_or_revrotate_num(t_push_swap *ps)
 
 static int	ch_stack_get_last_num(t_stack *stk)
 {
-	while (42)
+	while (8)
 	{
 		if (!stk->next)
 			return (stk->n);

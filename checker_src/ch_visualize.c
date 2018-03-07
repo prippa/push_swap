@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static int 	ch_vis_get_width(t_stack *stk)
+static int	ch_vis_get_width(t_stack *stk)
 {
 	int width;
 	int tmp;
