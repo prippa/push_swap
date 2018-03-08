@@ -41,6 +41,7 @@ static void	ps_get_valid_number(t_push_swap *ps, char *arg)
 				ps_free_error_exit(ps);
 			ps_duplicate_num_valid(ps, (int)num);
 			ps_stack_push(&ps->a, (int)num);
+			ps->size_a++;
 		}
 		else
 			ps_free_error_exit(ps);

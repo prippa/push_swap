@@ -12,28 +12,29 @@
 
 #include "push_swap.h"
 
-void	ps_print_operation(int op, int fd)
+char	*ps_get_operation(int op)
 {
 	if (op == SA)
-		ft_putendl_fd("sa", fd);
+		return ("sa");
 	else if (op == SB)
-		ft_putendl_fd("sb", fd);
+		return ("sb");
 	else if (op == SS)
-		ft_putendl_fd("ss", fd);
+		return ("ss");
 	else if (op == PA)
-		ft_putendl_fd("pa", fd);
+		return ("pa");
 	else if (op == PB)
-		ft_putendl_fd("pb", fd);
+		return ("pb");
 	else if (op == RA)
-		ft_putendl_fd("ra", fd);
+		return ("ra");
 	else if (op == RB)
-		ft_putendl_fd("rb", fd);
+		return ("rb");
 	else if (op == RR)
-		ft_putendl_fd("rr", fd);
+		return ("rr");
 	else if (op == RRA)
-		ft_putendl_fd("rra", fd);
+		return ("rra");
 	else if (op == RRB)
-		ft_putendl_fd("rrb", fd);
+		return ("rrb");
 	else if (op == RRR)
-		ft_putendl_fd("rrr", fd);
+		return ("rrr");
+	return ("");
 }

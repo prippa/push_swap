@@ -23,6 +23,10 @@ static void	ps_vis_init(t_visualizer *vis)
 	vis->width_b = 0;
 	vis->flag_col = 0;
 	vis->flag_vis = 0;
+	vis->flag_debug = 0;
+	vis->flag_size = 0;
+	vis->flag_history = 0;
+	ft_bzero(vis->h, sizeof(int) * HISTORY_SIZE);
 	vis->color = 6;
 }
 
@@ -30,6 +34,8 @@ void		ps_init(t_push_swap *ps)
 {
 	ps->a = NULL;
 	ps->b = NULL;
+	ps->size_a = 0;
+	ps->size_b = 0;
 	ps->op = NULL;
 	ps->buf = NULL;
 	ps->arr = NULL;

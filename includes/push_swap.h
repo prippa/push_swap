@@ -28,6 +28,8 @@
 # define RRB 10
 # define RRR 11
 
+# define HISTORY_SIZE 5
+
 typedef	struct		s_stack
 {
 	int				n;
@@ -45,6 +47,10 @@ typedef	struct		s_visualizer
 	int				width_b;
 	int				flag_vis;
 	int				flag_col;
+	int				flag_debug;
+	int				flag_size;
+	int				flag_history;
+	int 			h[HISTORY_SIZE];
 	int				color;
 }					t_visualizer;
 
@@ -52,6 +58,8 @@ typedef	struct		s_push_swap
 {
 	t_stack			*a;
 	t_stack			*b;
+	int				size_a;
+	int				size_b;
 	t_stack			*op;
 	char			*buf;
 	char			**arr;
@@ -61,6 +69,11 @@ typedef	struct		s_push_swap
 }					t_push_swap;
 
 void				ch_parser(t_push_swap *ps);
+void				ch_parser_debug(t_push_swap *ps);
+void				ch_solve_list_op(t_push_swap *ps);
+void				ch_solve_one_op(t_push_swap *ps, int op);
+void				ch_vis_dispatcher(t_push_swap *ps, int op);
+void				ch_vis_debug_dispatcher(t_push_swap *ps, int op, char *cm);
 void				ch_visualize(t_push_swap *ps);
 void				ch_vis_print_stack(t_push_swap *ps, t_stack *a, t_stack *b);
 void				ch_vis_get_op_num(t_push_swap *ps);
@@ -74,7 +87,7 @@ void				ps_op_rotate_duo(t_push_swap *ps);
 int					ps_op_reverse_rotate(t_stack **stk);
 void				ps_op_reverse_rotate_duo(t_push_swap *ps);
 
-void				ps_print_operation(int op, int fd);
+char				*ps_get_operation(int op);
 
 void				ps_init(t_push_swap *ps);
 

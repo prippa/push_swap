@@ -40,6 +40,25 @@ static int	ch_is_operation(char *op)
 		return (0);
 }
 
+void		ch_parser_debug(t_push_swap *ps)
+{
+	int catch_error;
+	int operation;
+
+	ch_vis_debug_dispatcher(ps, 0, NULL);
+	while ((catch_error = get_next_line(0, &ps->buf)) > 0)
+	{
+		if (!ft_strcmp(ps->buf, "exit"))
+			return ;
+		if ((operation = ch_is_operation(ps->buf)))
+			ch_solve_one_op(ps, operation);
+		ch_vis_debug_dispatcher(ps, operation, (!operation ? ps->buf : NULL));
+		ft_str_free(&ps->buf);
+	}
+	if (catch_error == -1)
+		ps_free_error_exit(ps);
+}
+
 void		ch_parser(t_push_swap *ps)
 {
 	int catch_error;

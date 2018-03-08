@@ -87,6 +87,7 @@ int		main(int argc, char **argv)
 		ps_init(&ps);
 		ps_parser(&ps, argv + 1);
 		//ch_vis_print_stack(&ps, ps.a, ps.b);
+		ps_free(&ps);
 		system("leaks push_swap");
 	}
 	return (0);

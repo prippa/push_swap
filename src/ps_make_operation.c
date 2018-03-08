@@ -12,7 +12,21 @@
 
 #include "push_swap.h"
 
-void	ps_make_operation(t_push_swap *ps, int op)
+static void	ps_calibrate_size(t_push_swap *ps, int op)
+{
+	if (op == PA && ps->flag_is_op_a)
+	{
+		ps->size_a++;
+		ps->size_b--;
+	}
+	else if (op == PB && ps->flag_is_op_b)
+	{
+		ps->size_a--;
+		ps->size_b++;
+	}
+}
+
+void		ps_make_operation(t_push_swap *ps, int op)
 {
 	if (op == SA)
 		ps->flag_is_op_a = ps_op_swap(&ps->a);
@@ -36,4 +50,5 @@ void	ps_make_operation(t_push_swap *ps, int op)
 		ps->flag_is_op_b = ps_op_reverse_rotate(&ps->b);
 	else if (op == RRR)
 		ps_op_reverse_rotate_duo(ps);
+	ps_calibrate_size(ps, op);
 }
