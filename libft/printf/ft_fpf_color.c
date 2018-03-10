@@ -12,7 +12,27 @@
 
 #include "ft_printf.h"
 
-void	ft_fpf_color(t_printf *fpf)
+static void	ft_fpf_bold_color(t_printf *fpf)
+{
+	if (fpf->color == F_BOLD_GRAY)
+		ft_pf_strjoin(fpf, BOLD_GRAY, ft_strlen(BOLD_GRAY));
+	else if (fpf->color == F_BOLD_RED)
+		ft_pf_strjoin(fpf, BOLD_RED, ft_strlen(BOLD_RED));
+	else if (fpf->color == F_BOLD_GREEN)
+		ft_pf_strjoin(fpf, BOLD_GREEN, ft_strlen(BOLD_GREEN));
+	else if (fpf->color == F_BOLD_YELLOW)
+		ft_pf_strjoin(fpf, BOLD_YELLOW, ft_strlen(BOLD_YELLOW));
+	else if (fpf->color == F_BOLD_BLUE)
+		ft_pf_strjoin(fpf, BOLD_BLUE, ft_strlen(BOLD_BLUE));
+	else if (fpf->color == F_BOLD_MAGENTA)
+		ft_pf_strjoin(fpf, BOLD_MAGENTA, ft_strlen(BOLD_MAGENTA));
+	else if (fpf->color == F_BOLD_CYAN)
+		ft_pf_strjoin(fpf, BOLD_CYAN, ft_strlen(BOLD_CYAN));
+	else if (fpf->color == F_BOLD_WHITE)
+		ft_pf_strjoin(fpf, BOLD_WHITE, ft_strlen(BOLD_WHITE));
+}
+
+void		ft_fpf_color(t_printf *fpf)
 {
 	if (fpf->color == F_RED)
 		ft_pf_strjoin(fpf, RED, ft_strlen(RED));
@@ -28,4 +48,6 @@ void	ft_fpf_color(t_printf *fpf)
 		ft_pf_strjoin(fpf, MAGENTA, ft_strlen(MAGENTA));
 	else if (fpf->color == F_WHITE)
 		ft_pf_strjoin(fpf, WHITE, ft_strlen(WHITE));
+	else
+		ft_fpf_bold_color(fpf);
 }
