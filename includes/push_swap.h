@@ -52,6 +52,7 @@ typedef	struct		s_visualizer
 	int				flag_history;
 	int 			h[HISTORY_SIZE];
 	int				color;
+	int				count_op;
 }					t_visualizer;
 
 typedef	struct		s_push_swap

@@ -28,6 +28,7 @@ static void	ps_vis_init(t_visualizer *vis)
 	vis->flag_history = 0;
 	ft_bzero(vis->h, sizeof(int) * HISTORY_SIZE);
 	vis->color = 6;
+	vis->count_op = 0;
 }
 
 void		ps_init(t_push_swap *ps)

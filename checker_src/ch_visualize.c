@@ -15,13 +15,13 @@
 static int	ch_identify_color(int op)
 {
 	if (op == SA || op == SB || op == SS)
-		return (F_CYAN);
+		return (F_BOLD_CYAN);
 	else if (op == PA || op == PB)
-		return (F_BLUE);
+		return (F_BOLD_BLUE);
 	else if (op == RA || op == RB || op == RR)
-		return (F_RED);
+		return (F_BOLD_RED);
 	else if (op == RRA || op == RRB || op == RRR)
-		return (F_YELLOW);
+		return (F_BOLD_YELLOW);
 	return (F_WHITE);
 }
 

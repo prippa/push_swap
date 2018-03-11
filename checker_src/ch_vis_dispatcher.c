@@ -8,7 +8,7 @@ void	ch_vis_debug_dispatcher(t_push_swap *ps, int op, char *cm)
 	ch_vis_get_op_num(ps);
 	ch_visualize(ps);
 	if (cm)
-		ft_printf("\n%~s%s", F_RED, "Error: command not found: ", cm);
+		ft_printf("\n%~s%s", F_BOLD_RED, "Error: command not found: ", cm);
 	ft_putstr("\n->");
 	ps->vis.flag_op_b = 0;
 	ps->vis.flag_op_a = 0;

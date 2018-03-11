@@ -12,6 +12,16 @@
 
 #include "push_swap.h"
 
+static void	ch_end(t_push_swap *ps)
+{
+	if (ps->vis.flag_vis || ps->vis.flag_col || ps->vis.flag_debug)
+		ft_printf("total operations: (%d)\n", ps->vis.count_op);
+	if (!ps->b && ps_stack_is_sorted(ps->a))
+		ft_putstr("OK\n");
+	else
+		ft_putstr("KO\n");
+}
+
 static int	ch_get_bonus_flags(t_push_swap *ps, char **argv)
 {
 	int i;
@@ -55,10 +65,7 @@ int			main(int argc, char **argv)
 			}
 			else
 				ch_parser_debug(&ps);
-			if (!ps.b && ps_stack_is_sorted(ps.a))
-				ft_putstr("OK\n");
-			else
-				ft_putstr("KO\n");
+			ch_end(&ps);
 			ps_free(&ps);
 		}
 	}
