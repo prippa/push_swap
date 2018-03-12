@@ -59,9 +59,9 @@ typedef	struct		s_push_swap
 {
 	t_stack			*a;
 	t_stack			*b;
+	t_stack			*op;
 	int				size_a;
 	int				size_b;
-	t_stack			*op;
 	char			*buf;
 	char			**arr;
 	int				flag_is_op_a;
@@ -78,6 +78,8 @@ void				ch_vis_debug_dispatcher(t_push_swap *ps, int op, char *cm);
 void				ch_visualize(t_push_swap *ps);
 void				ch_vis_print_stack(t_push_swap *ps, t_stack *a, t_stack *b);
 void				ch_vis_get_op_num(t_push_swap *ps);
+
+void				ps_algorithm(t_push_swap *ps);
 
 void				ps_make_operation(t_push_swap *ps, int op);
 int					ps_op_swap(t_stack **stk);

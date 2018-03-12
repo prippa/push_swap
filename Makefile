@@ -29,7 +29,7 @@ DIR_OBJ_CHECKER		= 	./checker_obj/
 
 HEAD_PUSH_SWAP		=	push_swap.h
 
-C_PUSH_SWAP			=	main.c
+C_PUSH_SWAP			=	main.c ps_algorithm.c
 
 
 C_CHECKER			=	main.c ch_parser.c\

@@ -78,7 +78,20 @@ void		ch_vis_print_stack(t_push_swap *ps, t_stack *a, t_stack *b)
 	}
 }
 
-int		main(int argc, char **argv)
+static void	ps_print_list_operations(t_push_swap *ps)
+{
+	t_stack *tmp;
+	
+	ps_stack_revers(&ps->op);
+	tmp = ps->op;
+	while (tmp)
+	{
+		ft_dprintf(0, "%s\n", ps_get_operation(tmp->n));
+		tmp = tmp->next;
+	}
+}
+
+int			main(int argc, char **argv)
 {
 	t_push_swap ps;
 
@@ -86,9 +99,11 @@ int		main(int argc, char **argv)
 	{
 		ps_init(&ps);
 		ps_parser(&ps, argv + 1);
+		ps_algorithm(&ps);
+		ps_print_list_operations(&ps);
 		//ch_vis_print_stack(&ps, ps.a, ps.b);
 		ps_free(&ps);
-		system("leaks push_swap");
+		system("leaks -quiet push_swap");
 	}
 	return (0);
 }
