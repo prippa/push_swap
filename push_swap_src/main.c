@@ -6,77 +6,11 @@
 /*   By: prippa <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 19:44:27 by prippa            #+#    #+#             */
-/*   Updated: 2018/02/28 19:44:28 by prippa           ###   ########.fr       */
+/*   Updated: 2018/03/13 13:36:09 by prippa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static void	ch_vis_print_a_b(t_push_swap *ps, t_stack *a, t_stack *b)
-{
-	if (ps->vis.flag_col && ((ps->vis.flag_op_a && ps->vis.num_op_a == a->n)
-							 || (ps->vis.flag_op_b && ps->vis.num_op_b == b->n)))
-	{
-		if ((ps->vis.flag_op_a && ps->vis.num_op_a == a->n)
-			&& (ps->vis.flag_op_b && ps->vis.num_op_b == b->n))
-			ft_printf("[%~*d] | [%~*d]\n",
-					  ps->vis.color, ps->vis.width_a, a->n,
-					  ps->vis.color, ps->vis.width_b, b->n);
-		else if (ps->vis.flag_op_a && ps->vis.num_op_a == a->n)
-			ft_printf("[%~*d] | [%*d]\n",
-					  ps->vis.color, ps->vis.width_a, a->n,
-					  ps->vis.width_b, b->n);
-		else if (ps->vis.flag_op_b && ps->vis.num_op_b == b->n)
-			ft_printf("[%*d] | [%~*d]\n",
-					  ps->vis.width_a, a->n,
-					  ps->vis.color, ps->vis.width_b, b->n);
-	}
-	else
-		ft_printf("[%*d] | [%*d]\n",
-				  ps->vis.width_a, a->n,
-				  ps->vis.width_b, b->n);
-}
-
-static void	ch_vis_print_a(t_push_swap *ps, t_stack *a)
-{
-	if (ps->vis.flag_col && ps->vis.flag_op_a && ps->vis.num_op_a == a->n)
-		ft_printf("[%~*d] | \n",
-				  ps->vis.color, ps->vis.width_a, a->n);
-	else
-		ft_printf("[%*d] | \n",
-				  ps->vis.width_a, a->n);
-}
-
-static void	ch_vis_print_b(t_push_swap *ps, t_stack *b)
-{
-	if (ps->vis.flag_col && ps->vis.flag_op_b && ps->vis.num_op_b == b->n)
-		ft_printf("%*c | [%~*d]\n",
-				  ps->vis.width_a + 2, ' ',
-				  ps->vis.color, ps->vis.width_b, b->n);
-	else
-		ft_printf("%*c | [%*d]\n",
-				  ps->vis.width_a + 2, ' ',
-				  ps->vis.width_b, b->n);
-}
-
-void		ch_vis_print_stack(t_push_swap *ps, t_stack *a, t_stack *b)
-{
-	while (8)
-	{
-		if (!a && !b)
-			return ;
-		if (a && b)
-			ch_vis_print_a_b(ps, a, b);
-		else if (a && !b)
-			ch_vis_print_a(ps, a);
-		else if (!a && b)
-			ch_vis_print_b(ps, b);
-		if (a)
-			a = a->next;
-		if (b)
-			b = b->next;
-	}
-}
 
 static void	ps_print_list_operations(t_push_swap *ps)
 {
@@ -86,7 +20,7 @@ static void	ps_print_list_operations(t_push_swap *ps)
 	tmp = ps->op;
 	while (tmp)
 	{
-		ft_dprintf(0, "%s\n", ps_get_operation(tmp->n));
+		ft_printf("%s\n", ps_get_operation(tmp->n));
 		tmp = tmp->next;
 	}
 }
@@ -101,9 +35,7 @@ int			main(int argc, char **argv)
 		ps_parser(&ps, argv + 1);
 		ps_algorithm(&ps);
 		ps_print_list_operations(&ps);
-		//ch_vis_print_stack(&ps, ps.a, ps.b);
 		ps_free(&ps);
-		system("leaks -quiet push_swap");
 	}
 	return (0);
 }
