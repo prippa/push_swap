@@ -6,7 +6,7 @@
 /*   By: prippa <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 13:24:12 by prippa            #+#    #+#             */
-/*   Updated: 2018/03/13 13:44:31 by prippa           ###   ########.fr       */
+/*   Updated: 2018/03/13 20:01:13 by prippa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ static int	ps_base_simple_logic(t_push_swap *ps)
 		return (PB);
 	else if (pos == 2)
 		return (SA);
+	else if (((ps->size_a / 2) + 1) == pos)
+		return (RA);
 	else if ((ps->size_a / 2) >= pos)
 		return (RA);
 	else if ((ps->size_a / 2) < pos)
