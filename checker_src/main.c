@@ -48,8 +48,8 @@ static int	ch_get_bonus_flags(t_push_swap *ps, char **argv)
 
 int			main(int argc, char **argv)
 {
-	t_push_swap ps;
-	int 		skip_bonus_flags;
+	t_push_swap	ps;
+	int			skip_bonus_flags;
 
 	if (argc > 1)
 	{

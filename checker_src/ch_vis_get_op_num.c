@@ -42,27 +42,17 @@ static void	ch_vis_get_push_or_revrotate_num(t_push_swap *ps)
 	}
 }
 
-static int	ch_stack_get_last_num(t_stack *stk)
-{
-	while (8)
-	{
-		if (!stk->next)
-			return (stk->n);
-		stk = stk->next;
-	}
-}
-
 static void	ch_vis_get_rotate_num(t_push_swap *ps)
 {
 	if ((ps->vis.op == RA || ps->vis.op == RR) && ps->flag_is_op_a)
 	{
 		ps->vis.flag_op_a = 1;
-		ps->vis.num_op_a = ch_stack_get_last_num(ps->a);
+		ps->vis.num_op_a = ps->a_end->n;
 	}
 	if ((ps->vis.op == RB || ps->vis.op == RR) && ps->flag_is_op_b)
 	{
 		ps->vis.flag_op_b = 1;
-		ps->vis.num_op_b = ch_stack_get_last_num(ps->b);
+		ps->vis.num_op_b = ps->b_end->n;
 	}
 }
 

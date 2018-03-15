@@ -57,7 +57,7 @@ typedef	struct		s_visualizer
 	int				flag_debug;
 	int				flag_size;
 	int				flag_history;
-	int 			h[HISTORY_SIZE];
+	int				h[HISTORY_SIZE];
 	int				color;
 	int				count_op;
 }					t_visualizer;

@@ -12,11 +12,11 @@
 
 #include "push_swap.h"
 
-static int ps_get_position_of_min_number(t_push_swap *ps)
+static int	ps_get_position_of_min_number(t_push_swap *ps)
 {
 	int		global_pos;
 	int		pos;
-	int 	min;
+	int		min;
 	t_stack	*a;
 
 	global_pos = 2;
