@@ -35,6 +35,8 @@ void		ps_init(t_push_swap *ps)
 {
 	ps->a = NULL;
 	ps->b = NULL;
+	ps->a_end = NULL;
+	ps->b_end = NULL;
 	ps->size_a = 0;
 	ps->size_b = 0;
 	ps->op = NULL;

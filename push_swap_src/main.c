@@ -14,9 +14,9 @@
 
 static void	ps_print_list_operations(t_push_swap *ps)
 {
-	t_stack *tmp;
+	t_op *tmp;
 	
-	ps_stack_revers(&ps->op);
+	ps_operation_revers(&ps->op);
 	tmp = ps->op;
 	while (tmp)
 	{

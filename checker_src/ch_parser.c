@@ -67,12 +67,12 @@ void		ch_parser(t_push_swap *ps)
 	while ((catch_error = get_next_line(0, &ps->buf)) > 0)
 	{
 		if ((operation = ch_is_operation(ps->buf)))
-			ps_stack_push(&ps->op, operation);
+			ps_operation_push(&ps->op, operation);
 		else
 			ps_free_error_exit(ps);
 		ft_str_free(&ps->buf);
 	}
 	if (catch_error == -1)
 		ps_free_error_exit(ps);
-	ps_stack_revers(&ps->op);
+	ps_operation_revers(&ps->op);
 }

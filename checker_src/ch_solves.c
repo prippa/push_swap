@@ -2,7 +2,7 @@
 
 void	ch_solve_list_op(t_push_swap *ps)
 {
-	t_stack *tmp;
+	t_op *tmp;
 
 	tmp = ps->op;
 	while (tmp)

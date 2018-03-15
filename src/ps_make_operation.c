@@ -35,9 +35,9 @@ void		ps_make_operation(t_push_swap *ps, int op)
 	else if (op == SS)
 		ps_op_swap_duo(ps);
 	else if (op == PA)
-		ps->flag_is_op_a = ps_op_push(&ps->b, &ps->a);
+		ps->flag_is_op_a = ps_op_push(&ps->b, &ps->b_end, &ps->a, &ps->a_end);
 	else if (op == PB)
-		ps->flag_is_op_b = ps_op_push(&ps->a, &ps->b);
+		ps->flag_is_op_b = ps_op_push(&ps->a, &ps->a_end, &ps->b, &ps->b_end);
 	else if (op == RA)
 		ps->flag_is_op_a = ps_op_rotate(&ps->a);
 	else if (op == RB)

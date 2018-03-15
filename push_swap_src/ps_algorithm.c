@@ -66,6 +66,6 @@ void		ps_algorithm(t_push_swap *ps)
 		else
 			op = ps_base_simple_logic(ps);
 		ps_make_operation(ps, op);
-		ps_stack_push(&ps->op, op);
+		ps_operation_push(&ps->op, op);
 	}
 }

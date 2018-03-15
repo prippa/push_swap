@@ -40,7 +40,7 @@ static void	ps_get_valid_number(t_push_swap *ps, char *arg)
 			if (num > MAXINT || num < MININT)
 				ps_free_error_exit(ps);
 			ps_duplicate_num_valid(ps, (int)num);
-			ps_stack_push(&ps->a, (int)num);
+			ps_stack_push(&ps->a, &ps->a_end, (int)num);
 			ps->size_a++;
 		}
 		else
@@ -60,5 +60,5 @@ void		ps_parser(t_push_swap *ps, char **argv)
 		ps_get_valid_number(ps, argv[i]);
 		i++;
 	}
-	ps_stack_revers(&ps->a);
+	ps_stack_revers(&ps->a, &ps->a_end);
 }

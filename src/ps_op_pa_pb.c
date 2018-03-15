@@ -12,14 +12,12 @@
 
 #include "push_swap.h"
 
-int		ps_op_push(t_stack **take, t_stack **put)
+int		ps_op_push(t_stack **take_start, t_stack **take_end,
+					t_stack **put_start, t_stack **put_end)
 {
-	int tmp;
-
-	if (!(*take))
+	if (!(*take_start))
 		return (0);
-	tmp = (*take)->n;
-	ps_stack_pop(take);
-	ps_stack_push(put, tmp);
+	ps_stack_push(put_start, put_end, (*take_start)->n);
+	ps_stack_pop(take_start, take_end);
 	return (1);
 }
