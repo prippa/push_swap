@@ -14,8 +14,6 @@
 
 static void	ch_end(t_push_swap *ps)
 {
-	if (ps->vis.flag_vis || ps->vis.flag_col || ps->vis.flag_debug)
-		ft_printf("total operations: (%d)\n", ps->vis.count_op);
 	if (!ps->b && ps_stack_is_sorted(ps->a))
 		ft_putstr("OK\n");
 	else

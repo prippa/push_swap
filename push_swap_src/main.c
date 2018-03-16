@@ -33,7 +33,7 @@ int			main(int argc, char **argv)
 	{
 		ps_init(&ps);
 		ps_parser(&ps, argv + 1);
-		ps_algorithm(&ps);
+		ps_simple_sort(&ps);
 		ps_print_list_operations(&ps);
 		ps_free(&ps);
 	}

@@ -88,7 +88,8 @@ void				ch_visualize(t_push_swap *ps);
 void				ch_vis_print_stack(t_push_swap *ps, t_stack *a, t_stack *b);
 void				ch_vis_get_op_num(t_push_swap *ps);
 
-void				ps_algorithm(t_push_swap *ps);
+void				ps_simple_sort(t_push_swap *ps);
+void				ps_quicksort(t_push_swap *ps);
 
 void				ps_make_operation(t_push_swap *ps, int op);
 int					ps_op_swap(t_stack **stk);

@@ -97,6 +97,7 @@ void		ch_visualize(t_push_swap *ps)
 		ft_printf("%*d  -  %d\n", ps->vis.width_a + 1, ps->size_a, ps->size_b);
 	if (ps->vis.flag_history)
 		ch_vis_print_history(ps);
+	ft_printf("\ntotal operations: (%d)\n", ps->vis.count_op);
 	if (!ps->vis.flag_debug)
 		read(1, 0, 1);
 }

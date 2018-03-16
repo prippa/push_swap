@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_algorithm.c                                     :+:      :+:    :+:   */
+/*   ps_simple_algorithm.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prippa <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -54,7 +54,7 @@ static int	ps_base_simple_logic(t_push_swap *ps)
 	return (0);
 }
 
-void		ps_algorithm(t_push_swap *ps)
+void		ps_simple_sort(t_push_swap *ps)
 {
 	int sorted;
 	int op;
