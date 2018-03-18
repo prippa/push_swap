@@ -36,7 +36,7 @@ C_PUSH_SWAP			=	main.c ps_simple_algorithm.c\
 C_CHECKER			=	main.c ch_parser.c\
 						ch_visualize.c ch_vis_print_stack.c\
 						ch_vis_get_op_num.c ch_solves.c\
-						ch_vis_dispatcher.c
+						ch_vis_dispatcher.c ch_vis_helpers.c
 
 
 C_SRC				=	ps_trash.c ps_init.c ps_free.c ps_parser.c\

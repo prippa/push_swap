@@ -12,53 +12,24 @@
 
 #include "push_swap.h"
 
-static int	ch_identify_color(int op)
+static void	ch_vis_print_total_op_done(t_push_swap *ps)
 {
-	if (op == SA || op == SB || op == SS)
-		return (F_BOLD_CYAN);
-	else if (op == PA || op == PB)
-		return (F_BOLD_BLUE);
-	else if (op == RA || op == RB || op == RR)
-		return (F_BOLD_RED);
-	else if (op == RRA || op == RRB || op == RRR)
-		return (F_BOLD_YELLOW);
-	return (F_WHITE);
-}
-
-static int	ch_vis_get_width(t_stack *stk)
-{
-	int width;
-	int tmp;
-
-	if (!stk)
-		return (1);
-	width = ft_nbrlen(stk->n);
-	stk = stk->next;
-	while (stk)
-	{
-		tmp = ft_nbrlen(stk->n);
-		if (width < tmp)
-			width = tmp;
-		stk = stk->next;
-	}
-	return (width);
-}
-
-static void	ch_vis_pull_history(int h[HISTORY_SIZE], int op)
-{
-	int pull;
-	int tmp;
-	int i;
-
-	i = 0;
-	pull = op;
-	while (i < HISTORY_SIZE)
-	{
-		tmp = h[i];
-		h[i] = pull;
-		pull = tmp;
-		i++;
-	}
+	ft_putchar('\n');
+	ft_printf("Swap          :  %~s = (%d)  %~s = (%d)  %~s = (%d)\n",
+	ch_identify_color(SA), "sa", ps->vis.o[SA - 1],
+	ch_identify_color(SB), "sb", ps->vis.o[SB - 1],
+	ch_identify_color(SS), "ss", ps->vis.o[SS - 1]);
+	ft_printf("Push          :  %~s = (%d)  %~s = (%d)\n",
+	ch_identify_color(PA), "pa", ps->vis.o[PA - 1],
+	ch_identify_color(PB), "pb", ps->vis.o[PB - 1]);
+	ft_printf("Rotate        :  %~s = (%d)  %~s = (%d)  %~s = (%d)\n",
+	ch_identify_color(RA), "ra", ps->vis.o[RA - 1],
+	ch_identify_color(RB), "rb", ps->vis.o[RB - 1],
+	ch_identify_color(RR), "rr", ps->vis.o[RR - 1]);
+	ft_printf("Revers Rotate : %~s = (%d) %~s = (%d) %~s = (%d)\n",
+	ch_identify_color(RRA), "rra", ps->vis.o[RRA - 1],
+	ch_identify_color(RRB), "rrb", ps->vis.o[RRB - 1],
+	ch_identify_color(RRR), "rrr", ps->vis.o[RRR - 1]);
 }
 
 static void	ch_vis_print_history(t_push_swap *ps)
@@ -73,10 +44,7 @@ static void	ch_vis_print_history(t_push_swap *ps)
 	i = HISTORY_SIZE;
 	while (--i >= 0)
 	{
-		if (ps->vis.flag_col)
-			ft_printf("{%~s}", ch_identify_color(h[i]), ps_get_operation(h[i]));
-		else
-			ft_printf("{%s}", ps_get_operation(h[i]));
+		ft_printf("{%~s}", ch_identify_color(h[i]), ps_get_operation(h[i]));
 		if ((i - 1) >= 0)
 			ft_putstr(" <- ");
 	}
@@ -85,19 +53,22 @@ static void	ch_vis_print_history(t_push_swap *ps)
 
 void		ch_visualize(t_push_swap *ps)
 {
-	if (ps->vis.flag_col)
-		ps->vis.color = ch_identify_color(ps->vis.op);
+	ps->vis.color = ch_identify_color(ps->vis.op);
 	if (ps->vis.op)
-		ft_printf("\nOperation -> %s\n", ps_get_operation(ps->vis.op));
+		ft_printf("\nOperation -> %~s\n",
+		ch_identify_color(ps->vis.op), ps_get_operation(ps->vis.op));
 	ps->vis.width_a = ch_vis_get_width(ps->a);
 	ps->vis.width_b = ch_vis_get_width(ps->b);
 	ft_printf("\n%*a  -  b\n", ps->vis.width_a + 1);
 	ch_vis_print_stack(ps, ps->a, ps->b);
-	if (ps->vis.flag_size)
+	if (ps->vis.f[F_SIZE])
 		ft_printf("%*d  -  %d\n", ps->vis.width_a + 1, ps->size_a, ps->size_b);
-	if (ps->vis.flag_history)
+	if (ps->vis.f[F_HISTORY])
 		ch_vis_print_history(ps);
-	ft_printf("\ntotal operations: (%d)\n", ps->vis.count_op);
-	if (!ps->vis.flag_debug)
+	if (ps->vis.f[F_OP])
+		ch_vis_print_total_op_done(ps);
+	if (ps->vis.f[F_TOTAL_OP])
+		ft_printf("\ntotal operations: (%d)\n", ps->vis.count_op);
+	if (!ps->vis.f[F_DEBUG])
 		read(1, 0, 1);
 }

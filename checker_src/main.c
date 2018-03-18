@@ -15,9 +15,9 @@
 static void	ch_end(t_push_swap *ps)
 {
 	if (!ps->b && ps_stack_is_sorted(ps->a))
-		ft_putstr("OK\n");
+		ft_printf("%~s\n", F_BOLD_GREEN, "OK");
 	else
-		ft_putstr("KO\n");
+		ft_printf("%~s\n", F_BOLD_RED, "KO");
 }
 
 static int	ch_get_bonus_flags(t_push_swap *ps, char **argv)
@@ -28,15 +28,17 @@ static int	ch_get_bonus_flags(t_push_swap *ps, char **argv)
 	while (argv[i])
 	{
 		if (!ft_strcmp(argv[i], "-v"))
-			ps->vis.flag_vis = 1;
-		else if (!ft_strcmp(argv[i], "-c"))
-			ps->vis.flag_col = 1;
+			ps->vis.f[F_VIS] = '1';
+		else if (!ft_strcmp(argv[i], "-o"))
+			ps->vis.f[F_OP] = '1';
 		else if (!ft_strcmp(argv[i], "-d"))
-			ps->vis.flag_debug = 1;
+			ps->vis.f[F_DEBUG] = '1';
 		else if (!ft_strcmp(argv[i], "-s"))
-			ps->vis.flag_size = 1;
+			ps->vis.f[F_SIZE] = '1';
 		else if (!ft_strcmp(argv[i], "-h"))
-			ps->vis.flag_history = 1;
+			ps->vis.f[F_HISTORY] = '1';
+		else if (!ft_strcmp(argv[i], "-t"))
+			ps->vis.f[F_TOTAL_OP] = '1';
 		else
 			break ;
 		i++;
@@ -56,7 +58,7 @@ int			main(int argc, char **argv)
 		if (argv[skip_bonus_flags])
 		{
 			ps_parser(&ps, argv + skip_bonus_flags);
-			if (!ps.vis.flag_debug)
+			if (!ps.vis.f[F_DEBUG])
 			{
 				ch_parser(&ps);
 				ch_solve_list_op(&ps);

@@ -21,12 +21,9 @@ static void	ps_vis_init(t_visualizer *vis)
 	vis->num_op_b = 0;
 	vis->width_a = 0;
 	vis->width_b = 0;
-	vis->flag_col = 0;
-	vis->flag_vis = 0;
-	vis->flag_debug = 0;
-	vis->flag_size = 0;
-	vis->flag_history = 0;
+	ft_bzero(vis->f, PS_FLAG_SIZE);
 	ft_bzero(vis->h, sizeof(int) * HISTORY_SIZE);
+	ft_bzero(vis->o, sizeof(int) * OPERATIONS_SIZE);
 	vis->color = 6;
 	vis->count_op = 0;
 }

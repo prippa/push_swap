@@ -29,6 +29,15 @@
 # define RRR 11
 
 # define HISTORY_SIZE 5
+# define OPERATIONS_SIZE 11
+# define PS_FLAG_SIZE 6
+
+# define F_VIS 		0
+# define F_OP 		1
+# define F_DEBUG 	2
+# define F_SIZE 	3
+# define F_HISTORY 	4
+# define F_TOTAL_OP 5
 
 typedef	struct		s_stack
 {
@@ -52,12 +61,9 @@ typedef	struct		s_visualizer
 	int				num_op_b;
 	int				width_a;
 	int				width_b;
-	int				flag_vis;
-	int				flag_col;
-	int				flag_debug;
-	int				flag_size;
-	int				flag_history;
+	char 			f[PS_FLAG_SIZE];
 	int				h[HISTORY_SIZE];
+	int				o[OPERATIONS_SIZE];
 	int				color;
 	int				count_op;
 }					t_visualizer;
@@ -85,6 +91,9 @@ void				ch_solve_one_op(t_push_swap *ps, int op);
 void				ch_vis_dispatcher(t_push_swap *ps, int op);
 void				ch_vis_debug_dispatcher(t_push_swap *ps, int op, char *cm);
 void				ch_visualize(t_push_swap *ps);
+int					ch_identify_color(int op);
+int					ch_vis_get_width(t_stack *stk);
+void				ch_vis_pull_history(int h[HISTORY_SIZE], int op);
 void				ch_vis_print_stack(t_push_swap *ps, t_stack *a, t_stack *b);
 void				ch_vis_get_op_num(t_push_swap *ps);
 

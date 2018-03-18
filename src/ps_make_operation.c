@@ -51,5 +51,4 @@ void		ps_make_operation(t_push_swap *ps, int op)
 	else if (op == RRR)
 		ps_op_reverse_rotate_duo(ps);
 	ps_calibrate_size(ps, op);
-	ps->vis.count_op++;
 }
