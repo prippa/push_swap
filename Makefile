@@ -29,10 +29,9 @@ DIR_OBJ_CHECKER		= 	./checker_obj/
 
 HEAD_PUSH_SWAP		=	push_swap.h
 
-C_PUSH_SWAP			=	main.c ps_simple_algorithm.c\
+C_PUSH_SWAP			=	main.c\
 						ps_quicksort_algorithm.c ps_sort_first_stage.c\
-						ps_sort_helpers.c ps_sort_make_operation.c\
-						ps_sort_second_stage.c ps_sort_last_3_numbers.c
+						ps_sort_helpers.c ps_sort_second_stage.c
 
 
 C_CHECKER			=	main.c ch_parser.c\

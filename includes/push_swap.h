@@ -98,12 +98,9 @@ void				ch_vis_pull_history(int h[HISTORY_SIZE], int op);
 void				ch_vis_print_stack(t_push_swap *ps, t_stack *a, t_stack *b);
 void				ch_vis_get_op_num(t_push_swap *ps);
 
-void				ps_simple_sort(t_push_swap *ps);
 void				ps_quick_sort(t_push_swap *ps);
 int					ps_sort_first_stage(t_push_swap *ps);
 void				ps_sort_second_stage(t_push_swap *ps);
-void				ps_sort_last_3_numbers_a(t_push_swap *ps, t_stack *stk);
-void				ps_sort_last_3_numbers_b(t_push_swap *ps, t_stack *stk);
 void				ps_sort_make_op(t_push_swap *ps, int op);
 int					ps_sort_if_can_move_up(t_stack *stk, int size, int num);
 int 				ps_sort_in_half_case(t_stack *stk, int num, int min_or_max);

@@ -55,14 +55,6 @@ static void	ps_sort_search_and_push_a(t_push_swap *ps)
 
 void		ps_sort_second_stage(t_push_swap *ps)
 {
-	int sort;
-
-	while (!(sort = ps_stack_is_rev_sorted(ps->b)) && ps->size_b > 3)
-		ps_sort_search_and_push_a(ps);
-	if (ps->size_b == 3)
-		ps_sort_last_3_numbers_b(ps, ps->b);
-	else if (!sort && ps->size_b == 2)
-		ps_sort_make_op(ps, SB);
 	while (ps->b)
-		ps_sort_make_op(ps, PA);
+		ps_sort_search_and_push_a(ps);
 }

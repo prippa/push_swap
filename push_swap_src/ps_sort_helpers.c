@@ -82,3 +82,9 @@ int 		ps_sort_get_op_num(t_push_swap *ps, int min_or_max)
 	else
 		return (0);
 }
+
+void		ps_sort_make_op(t_push_swap *ps, int op)
+{
+	ps_make_operation(ps, op);
+	ps_operation_push(&ps->op, op);
+}
