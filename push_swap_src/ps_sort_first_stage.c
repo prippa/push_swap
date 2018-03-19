@@ -1,5 +1,16 @@
 #include "push_swap.h"
 
+static int	ps_sort_if_rr_ss_sa(t_push_swap *ps)
+{
+	if (ps->size_b > 2 && ps->b->n < ps->b->next->n)
+	{
+		if (ps->b->n < ps->b->next->next->n)
+			return (RR);
+		return (SS);
+	}
+	return (RA);
+}
+
 static void	ps_sort_search_and_push_b(t_push_swap *ps)
 {
 	int min;
@@ -11,14 +22,14 @@ static void	ps_sort_search_and_push_b(t_push_swap *ps)
 		while ((op = ps_sort_if_can_move_up(ps->a, ps->size_a, min)) > 0)
 		{
 			if (op == 1 || op == 3)
-				ps_sort_make_op(ps, RA);
+				ps_sort_make_op(ps, ps_sort_if_rr_ss_sa(ps));
 			else if (op == 2)
 				ps_sort_make_op(ps, RRA);
 		}
 		ps_sort_make_op(ps, PB);
 	}
 	else
-		ps_sort_make_op(ps, RA);
+		ps_sort_make_op(ps, ps_sort_if_rr_ss_sa(ps));
 }
 
 int			ps_sort_first_stage(t_push_swap *ps)

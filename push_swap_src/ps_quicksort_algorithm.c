@@ -14,7 +14,7 @@
 
 void		ps_quick_sort(t_push_swap *ps)
 {
-	ps->search_radius = (ps->size_a > 250 ? 7 : 3);
+	ps->search_radius = (ps->size_a > 250 ? 5 : 3);
 	if (ps_sort_first_stage(ps))
 		return ;
 	ps_sort_second_stage(ps);
