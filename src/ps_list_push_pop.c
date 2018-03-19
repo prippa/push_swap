@@ -17,7 +17,7 @@ void		ps_operation_push(t_op **op, int n)
 	t_op *new;
 
 	if (!(new = (t_op *)malloc(sizeof(t_op))))
-		exit(0);
+		exit(-1);
 	new->n = n;
 	new->next = *op;
 	*op = new;
@@ -37,7 +37,7 @@ void		ps_stack_push(t_stack **start, t_stack **end, int n)
 	t_stack *new;
 
 	if (!(new = (t_stack *)malloc(sizeof(t_stack))))
-		exit(0);
+		exit(-1);
 	new->n = n;
 	new->next = *start;
 	new->prev = NULL;

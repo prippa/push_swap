@@ -37,6 +37,7 @@ void		ps_init(t_push_swap *ps)
 	ps->size_a = 0;
 	ps->size_b = 0;
 	ps->op = NULL;
+	ps->search_radius = 0;
 	ps->buf = NULL;
 	ps->arr = NULL;
 	ps->flag_is_op_a = 0;

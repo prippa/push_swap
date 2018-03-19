@@ -79,6 +79,7 @@ typedef	struct		s_push_swap
 	int				size_b;
 	int				flag_is_op_a;
 	int				flag_is_op_b;
+	int				search_radius;
 	char			*buf;
 	char			**arr;
 	t_visualizer	vis;
@@ -98,7 +99,17 @@ void				ch_vis_print_stack(t_push_swap *ps, t_stack *a, t_stack *b);
 void				ch_vis_get_op_num(t_push_swap *ps);
 
 void				ps_simple_sort(t_push_swap *ps);
-void				ps_quicksort(t_push_swap *ps);
+void				ps_quick_sort(t_push_swap *ps);
+int					ps_sort_first_stage(t_push_swap *ps);
+void				ps_sort_second_stage(t_push_swap *ps);
+void				ps_sort_last_3_numbers_a(t_push_swap *ps, t_stack *stk);
+void				ps_sort_last_3_numbers_b(t_push_swap *ps, t_stack *stk);
+void				ps_sort_make_op(t_push_swap *ps, int op, int make_smart);
+int					ps_sort_if_can_move_up(t_stack *stk, int size, int num);
+int 				ps_sort_in_half_case(t_stack *stk, int num, int min_or_max);
+int					ps_sort_get_search_numbers(t_stack *start, t_stack *end,
+					int size, int min_or_max);
+int 				ps_sort_get_op_num(t_push_swap *ps, int min_or_max);
 
 void				ps_make_operation(t_push_swap *ps, int op);
 int					ps_op_swap(t_stack **stk);
@@ -125,6 +136,7 @@ void				ps_stack_pop(t_stack **start, t_stack **end);
 void				ps_operation_revers(t_op **op);
 void				ps_stack_revers(t_stack **start, t_stack **end);
 int					ps_stack_is_sorted(t_stack *stk);
+int					ps_stack_is_rev_sorted(t_stack *stk);
 
 void				ps_free_error_exit(t_push_swap *ps);
 
