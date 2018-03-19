@@ -38,9 +38,9 @@ int 		ps_sort_in_half_case(t_stack *stk, int num, int min_or_max)
 		stk = stk->next;
 	}
 	if (min_or_max == 1)
-		return ((less < more) ? 1 : 0);
+		return ((less <= ((more + less + 1) / 5)) ? 1 : 0);
 	else if (min_or_max == 2)
-		return ((less > more) ? 1 : 0);
+		return ((less >= ((more + less + 1) / 5)) ? 1 : 0);
 	return (0);
 }
 

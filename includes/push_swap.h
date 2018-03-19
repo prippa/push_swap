@@ -16,28 +16,28 @@
 # include "libft.h"
 # include "ft_printf.h"
 
-# define SA 1
-# define SB 2
-# define SS 3
-# define PA 4
-# define PB 5
-# define RA 6
-# define RB 7
-# define RR 8
-# define RRA 9
-# define RRB 10
-# define RRR 11
+# define SA		1
+# define SB		2
+# define SS		3
+# define PA		4
+# define PB		5
+# define RA		6
+# define RB		7
+# define RR		8
+# define RRA	9
+# define RRB	10
+# define RRR	11
 
-# define HISTORY_SIZE 5
-# define OPERATIONS_SIZE 11
-# define PS_FLAG_SIZE 6
+# define HISTORY_SIZE		5
+# define OPERATIONS_SIZE	11
+# define PS_FLAG_SIZE		6
 
-# define F_VIS 		0
-# define F_OP 		1
-# define F_DEBUG 	2
-# define F_SIZE 	3
-# define F_HISTORY 	4
-# define F_TOTAL_OP 5
+# define F_VIS		0
+# define F_OP		1
+# define F_DEBUG	2
+# define F_SIZE		3
+# define F_HISTORY	4
+# define F_TOTAL_OP	5
 
 typedef	struct		s_stack
 {
@@ -104,7 +104,7 @@ int					ps_sort_first_stage(t_push_swap *ps);
 void				ps_sort_second_stage(t_push_swap *ps);
 void				ps_sort_last_3_numbers_a(t_push_swap *ps, t_stack *stk);
 void				ps_sort_last_3_numbers_b(t_push_swap *ps, t_stack *stk);
-void				ps_sort_make_op(t_push_swap *ps, int op, int make_smart);
+void				ps_sort_make_op(t_push_swap *ps, int op);
 int					ps_sort_if_can_move_up(t_stack *stk, int size, int num);
 int 				ps_sort_in_half_case(t_stack *stk, int num, int min_or_max);
 int					ps_sort_get_search_numbers(t_stack *start, t_stack *end,
