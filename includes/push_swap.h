@@ -61,7 +61,7 @@ typedef	struct		s_visualizer
 	int				num_op_b;
 	int				width_a;
 	int				width_b;
-	char 			f[PS_FLAG_SIZE];
+	char			f[PS_FLAG_SIZE];
 	int				h[HISTORY_SIZE];
 	int				o[OPERATIONS_SIZE];
 	int				color;
@@ -103,10 +103,10 @@ int					ps_sort_first_stage(t_push_swap *ps);
 void				ps_sort_second_stage(t_push_swap *ps);
 void				ps_sort_make_op(t_push_swap *ps, int op);
 int					ps_sort_if_can_move_up(t_stack *stk, int size, int num);
-int 				ps_sort_in_half_case(t_stack *stk, int num, int min_or_max);
+int					ps_sort_in_half_case(t_stack *stk, int num, int min_or_max);
 int					ps_sort_get_search_numbers(t_stack *start, t_stack *end,
 					int size, int min_or_max);
-int 				ps_sort_get_op_num(t_push_swap *ps, int min_or_max);
+int					ps_sort_get_op_num(t_push_swap *ps, int min_or_max);
 
 void				ps_make_operation(t_push_swap *ps, int op);
 int					ps_op_swap(t_stack **stk);
@@ -136,5 +136,6 @@ int					ps_stack_is_sorted(t_stack *stk);
 int					ps_stack_is_rev_sorted(t_stack *stk);
 
 void				ps_free_error_exit(t_push_swap *ps);
+void				ps_free_exit(t_push_swap *ps, char *str);
 
 #endif

@@ -39,6 +39,8 @@ static int	ch_get_bonus_flags(t_push_swap *ps, char **argv)
 			ps->vis.f[F_HISTORY] = '1';
 		else if (!ft_strcmp(argv[i], "-t"))
 			ps->vis.f[F_TOTAL_OP] = '1';
+		else if (!ft_strcmp(argv[i], "-help"))
+			ps_free_exit(ps, "flags: [-v -d -s -h -o -t]\n");
 		else
 			break ;
 		i++;
@@ -58,6 +60,8 @@ int			main(int argc, char **argv)
 		if (argv[skip_bonus_flags])
 		{
 			ps_parser(&ps, argv + skip_bonus_flags);
+			if (!ps.a)
+				ps_free_exit(&ps, "");
 			if (!ps.vis.f[F_DEBUG])
 			{
 				ch_parser(&ps);

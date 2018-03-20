@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ps_sort_helpers.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: prippa <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/03/20 11:55:26 by prippa            #+#    #+#             */
+/*   Updated: 2018/03/20 11:55:27 by prippa           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int			ps_sort_if_can_move_up(t_stack *stk, int size, int num)
@@ -22,7 +34,7 @@ int			ps_sort_if_can_move_up(t_stack *stk, int size, int num)
 		return (2);
 }
 
-int 		ps_sort_in_half_case(t_stack *stk, int num, int min_or_max)
+int			ps_sort_in_half_case(t_stack *stk, int num, int min_or_max)
 {
 	int less;
 	int more;
@@ -73,12 +85,14 @@ int			ps_sort_get_search_numbers(t_stack *start, t_stack *end,
 	return (n);
 }
 
-int 		ps_sort_get_op_num(t_push_swap *ps, int min_or_max)
+int			ps_sort_get_op_num(t_push_swap *ps, int min_or_max)
 {
 	if (min_or_max == 1)
-		return (ps_sort_get_search_numbers(ps->a, ps->a_end, ps->search_radius * 2, 1));
+		return (ps_sort_get_search_numbers(ps->a, ps->a_end,
+				ps->search_radius * 2, 1));
 	else if (min_or_max == 2)
-		return (ps_sort_get_search_numbers(ps->b, ps->b_end, ps->search_radius * 2, 2));
+		return (ps_sort_get_search_numbers(ps->b, ps->b_end,
+				ps->search_radius * 2, 2));
 	else
 		return (0);
 }

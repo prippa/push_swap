@@ -13,7 +13,7 @@
 PUSH_SWAP			=	push_swap
 CHECKER				=	checker
 
-#FLAGS				= 	-Wall -Werror -Wextra
+FLAGS				= 	-Wall -Werror -Wextra
 
 CC					=	gcc
 

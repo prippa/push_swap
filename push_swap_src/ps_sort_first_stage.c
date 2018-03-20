@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ps_sort_first_stage.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: prippa <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/03/20 11:55:17 by prippa            #+#    #+#             */
+/*   Updated: 2018/03/20 11:55:19 by prippa           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static void	ps_sort_last_3_numbers(t_push_swap *ps, t_stack *stk)
@@ -6,22 +18,22 @@ static void	ps_sort_last_3_numbers(t_push_swap *ps, t_stack *stk)
 		&& stk->next->n < stk->next->next->n)
 		return ;
 	else if (stk->n < stk->next->n && stk->n < stk->next->next->n
-			 && stk->next->n > stk->next->next->n)
+			&& stk->next->n > stk->next->next->n)
 	{
 		ps_sort_make_op(ps, RRA);
 		ps_sort_make_op(ps, SA);
 	}
 	else if (stk->n > stk->next->n && stk->n < stk->next->next->n
-			 && stk->next->n < stk->next->next->n)
+			&& stk->next->n < stk->next->next->n)
 		ps_sort_make_op(ps, SA);
 	else if (stk->n < stk->next->n && stk->n > stk->next->next->n
-			 && stk->next->n > stk->next->next->n)
+			&& stk->next->n > stk->next->next->n)
 		ps_sort_make_op(ps, RRA);
 	else if (stk->n > stk->next->n && stk->n > stk->next->next->n
-			 && stk->next->n < stk->next->next->n)
+			&& stk->next->n < stk->next->next->n)
 		ps_sort_make_op(ps, RA);
 	else if (stk->n > stk->next->n && stk->n > stk->next->next->n
-			 && stk->next->n > stk->next->next->n)
+			&& stk->next->n > stk->next->next->n)
 	{
 		ps_sort_make_op(ps, SA);
 		ps_sort_make_op(ps, RRA);
