@@ -133,7 +133,6 @@ void				ps_stack_pop(t_stack **start, t_stack **end);
 void				ps_operation_revers(t_op **op);
 void				ps_stack_revers(t_stack **start, t_stack **end);
 int					ps_stack_is_sorted(t_stack *stk);
-int					ps_stack_is_rev_sorted(t_stack *stk);
 
 void				ps_free_error_exit(t_push_swap *ps);
 void				ps_free_exit(t_push_swap *ps, char *str);
