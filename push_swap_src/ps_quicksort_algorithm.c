@@ -12,9 +12,24 @@
 
 #include "push_swap.h"
 
+static int	ps_get_right_radius(double size_a)
+{
+	int		size;
+	double	radius;
+
+	size = 2;
+	radius = 0;
+	while (size < size_a)
+	{
+		size *= 3.85;
+		radius++;
+	}
+	return (radius);
+}
+
 void		ps_quick_sort(t_push_swap *ps)
 {
-	ps->search_radius = (ps->size_a > 250 ? 5 : 3);
+	ps->search_radius = ps_get_right_radius((double)ps->size_a);
 	if (ps_sort_first_stage(ps))
 		return ;
 	ps_sort_second_stage(ps);
