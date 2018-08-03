@@ -1,6 +1,10 @@
 # push_swap
 Project from Algorithms branch in course 42
 
+her i have double linked list
+
+![](https://thumbs.gfycat.com/FlashyNeglectedAnemone-size_restricted.gif)
+
 ![](https://thumbs.gfycat.com/ClutteredRaggedAttwatersprairiechicken-size_restricted.gif)
 ![](https://thumbs.gfycat.com/ColorfulWildAustraliankestrel-size_restricted.gif)
 
