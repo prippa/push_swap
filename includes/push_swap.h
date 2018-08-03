@@ -16,28 +16,34 @@
 # include "libft.h"
 # include "ft_printf.h"
 
-# define SA		1
-# define SB		2
-# define SS		3
-# define PA		4
-# define PB		5
-# define RA		6
-# define RB		7
-# define RR		8
-# define RRA	9
-# define RRB	10
-# define RRR	11
+typedef enum	e_operations
+{
+	SA = 1,
+	SB,
+	SS,
+	PA,
+	PB,
+	RA,
+	RB,
+	RR,
+	RRA,
+	RRB,
+	RRR
+}				t_operations;
 
 # define HISTORY_SIZE		5
 # define OPERATIONS_SIZE	11
-# define PS_FLAG_SIZE		6
 
-# define F_VIS		0
-# define F_OP		1
-# define F_DEBUG	2
-# define F_SIZE		3
-# define F_HISTORY	4
-# define F_TOTAL_OP	5
+typedef enum	e_flags
+{
+	F_VIS = 0,
+	F_OP,
+	F_DEBUG,
+	F_SIZE,
+	F_HISTORY,
+	F_TOTAL_OP,
+	PS_FLAG_SIZE
+}				t_flags;
 
 typedef	struct		s_stack
 {
@@ -105,14 +111,14 @@ void				ps_sort_make_op(t_push_swap *ps, int op);
 int					ps_sort_if_can_move_up(t_stack *stk, int size, int num);
 int					ps_sort_in_half_case(t_stack *stk, int num, int min_or_max);
 int					ps_sort_get_search_numbers(t_stack *start, t_stack *end,
-					int size, int min_or_max);
+						int size, int min_or_max);
 int					ps_sort_get_op_num(t_push_swap *ps, int min_or_max);
 
 void				ps_make_operation(t_push_swap *ps, int op);
 int					ps_op_swap(t_stack **stk);
 void				ps_op_swap_duo(t_push_swap *ps);
 int					ps_op_push(t_stack **take_start, t_stack **take_end,
-					t_stack **put_start, t_stack **put_end);
+						t_stack **put_start, t_stack **put_end);
 int					ps_op_rotate(t_stack **stk);
 void				ps_op_rotate_duo(t_push_swap *ps);
 int					ps_op_reverse_rotate(t_stack **stk);
@@ -134,7 +140,8 @@ void				ps_operation_revers(t_op **op);
 void				ps_stack_revers(t_stack **start, t_stack **end);
 int					ps_stack_is_sorted(t_stack *stk);
 
-void				ps_free_error_exit(t_push_swap *ps);
+void				ps_free_error_exit(t_push_swap *ps, char *str);
 void				ps_free_exit(t_push_swap *ps, char *str);
+void				ps_free_perror_exit(t_push_swap *ps, char *message);
 
 #endif

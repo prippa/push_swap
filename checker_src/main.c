@@ -40,7 +40,7 @@ static int	ch_get_bonus_flags(t_push_swap *ps, char **argv)
 		else if (!ft_strcmp(argv[i], "-t"))
 			ps->vis.f[F_TOTAL_OP] = '1';
 		else if (!ft_strcmp(argv[i], "-help"))
-			ps_free_exit(ps, "flags: [-v -d -s -h -o -t]\n");
+			ps_free_exit(ps, "flags: [-v -d -s -h -o -t]");
 		else
 			break ;
 		i++;
@@ -57,21 +57,18 @@ int			main(int argc, char **argv)
 	{
 		ps_init(&ps);
 		skip_bonus_flags = ch_get_bonus_flags(&ps, argv);
-		if (argv[skip_bonus_flags])
+		if (!argv[skip_bonus_flags])
+			ps_free_error_exit(&ps, "ERROR: No arguments");
+		ps_parser(&ps, argv + skip_bonus_flags);
+		if (!ps.vis.f[F_DEBUG])
 		{
-			ps_parser(&ps, argv + skip_bonus_flags);
-			if (!ps.a)
-				ps_free_exit(&ps, "");
-			if (!ps.vis.f[F_DEBUG])
-			{
-				ch_parser(&ps);
-				ch_solve_list_op(&ps);
-			}
-			else
-				ch_parser_debug(&ps);
-			ch_end(&ps);
-			ps_free(&ps);
+			ch_parser(&ps);
+			ch_solve_list_op(&ps);
 		}
+		else
+			ch_parser_debug(&ps);
+		ch_end(&ps);
+		ps_free(&ps);
 	}
 	return (0);
 }

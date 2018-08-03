@@ -26,14 +26,9 @@ static void	ps_stack_free(t_stack **start, t_stack **end)
 
 void		ps_free(t_push_swap *ps)
 {
-	if (ps->a)
-		ps_stack_free(&ps->a, &ps->a_end);
-	if (ps->b)
-		ps_stack_free(&ps->b, &ps->b_end);
-	if (ps->op)
-		ps_operation_free(&ps->op);
-	if (ps->buf)
-		ft_str_free(&ps->buf);
-	if (ps->arr)
-		ft_arr_free(&ps->arr);
+	ps_stack_free(&ps->a, &ps->a_end);
+	ps_stack_free(&ps->b, &ps->b_end);
+	ps_operation_free(&ps->op);
+	ft_str_free(&ps->buf);
+	ft_arr_free(&ps->arr);
 }

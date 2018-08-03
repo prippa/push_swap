@@ -14,14 +14,21 @@
 
 void	ps_free_exit(t_push_swap *ps, char *str)
 {
-	ft_printf("%s", str);
+	ft_putendl(str);
 	ps_free(ps);
 	exit(0);
 }
 
-void	ps_free_error_exit(t_push_swap *ps)
+void	ps_free_error_exit(t_push_swap *ps, char *str)
 {
-	ft_putstr_fd("Error\n", 2);
+	ft_putendl_fd(str, 2);
 	ps_free(ps);
 	exit(-1);
+}
+
+void	ps_free_perror_exit(t_push_swap *ps, char *message)
+{
+	perror(message);
+	ps_free(ps);
+	exit(-2);
 }

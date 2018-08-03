@@ -56,7 +56,7 @@ void		ch_parser_debug(t_push_swap *ps)
 		ft_str_free(&ps->buf);
 	}
 	if (catch_error == -1)
-		ps_free_error_exit(ps);
+		ps_free_perror_exit(ps, "ERROR");
 }
 
 void		ch_parser(t_push_swap *ps)
@@ -69,10 +69,10 @@ void		ch_parser(t_push_swap *ps)
 		if ((operation = ch_is_operation(ps->buf)))
 			ps_operation_push(&ps->op, operation);
 		else
-			ps_free_error_exit(ps);
+			ps_free_error_exit(ps, "ERROR: command not exist");
 		ft_str_free(&ps->buf);
 	}
 	if (catch_error == -1)
-		ps_free_error_exit(ps);
+		ps_free_perror_exit(ps, "ERROR");
 	ps_operation_revers(&ps->op);
 }

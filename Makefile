@@ -40,9 +40,9 @@ C_CHECKER			=	main.c ch_parser.c\
 						ch_vis_dispatcher.c ch_vis_helpers.c
 
 
-C_SRC				=	ps_trash.c ps_init.c ps_free.c ps_parser.c\
+C_SRC				=	ps_exit.c ps_init.c ps_free.c ps_parser.c\
 						ps_list_push_pop.c ps_list_revers.c\
-						ps_print_operation.c\
+						ps_get_operation.c\
 						ps_op_sa_sb_ss.c ps_op_pa_pb.c\
 						ps_op_ra_rb_rr.c ps_op_rra_rrb_rrr.c\
 						ps_make_operation.c ps_stack_is_sorted.c
