@@ -21,7 +21,7 @@ static int	ps_get_right_radius(double size_a)
 	radius = 3;
 	while (size < size_a)
 	{
-		size *= 2.23;
+		size *= 2.24;
 		radius++;
 	}
 	return (radius);

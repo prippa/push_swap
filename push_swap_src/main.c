@@ -25,6 +25,13 @@ static void	ps_print_list_operations(t_push_swap *ps)
 	}
 }
 
+static void	ps_print_usage(void)
+{
+	ft_putstr("Usage 🚀🚀🚀 : ./push_swap \
+[integer values that are not in order ...]\n");
+	exit(0);
+}
+
 int			main(int argc, char **argv)
 {
 	t_push_swap ps;
@@ -37,5 +44,7 @@ int			main(int argc, char **argv)
 		ps_print_list_operations(&ps);
 		ps_free(&ps);
 	}
+	else
+		ps_print_usage();
 	return (0);
 }

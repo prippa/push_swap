@@ -20,6 +20,25 @@ static void	ch_end(t_push_swap *ps)
 		ft_printf("%~s\n", F_BOLD_RED, "KO");
 }
 
+static void	ch_print_usage(void)
+{
+	ft_putstr("Usage 🚀🚀🚀 : ./checker [-v -d -s -h -o -t] [integer numbers ...]\n");
+	ft_putstr("####################### Flags Manual #######################\n");
+	ft_putstr("-v : Visualizes how the stack was sorted when we already have \
+the entire list of operations.\n");
+	ft_putstr("-d : Debug mode. A mode where you can sort the stack by \
+yourself without using push_swap programme.\n");
+	ft_putstr("-s : Shows the stacks size (work with -v or -d flag)\n");
+	ft_putstr("-h : Shows the last five operations that have already \
+been executed (work with -v or -d flag)\n");
+	ft_putstr("-o : Shows the sum of operations that have already been \
+executed (work with -v or -d flag)\n");
+	ft_putstr("-t : Shows the operation counter (work with -v or -d flag)\n");
+	ft_putstr("-help : prints usage.\n");
+	ft_putstr("############################################################\n");
+	exit(0);
+}
+
 static int	ch_get_bonus_flags(t_push_swap *ps, char **argv)
 {
 	int i;
@@ -40,7 +59,7 @@ static int	ch_get_bonus_flags(t_push_swap *ps, char **argv)
 		else if (!ft_strcmp(argv[i], "-t"))
 			ps->vis.f[F_TOTAL_OP] = '1';
 		else if (!ft_strcmp(argv[i], "-help"))
-			ps_free_exit(ps, "flags: [-v -d -s -h -o -t]");
+			ch_print_usage();
 		else
 			break ;
 		i++;
@@ -70,5 +89,7 @@ int			main(int argc, char **argv)
 		ch_end(&ps);
 		ps_free(&ps);
 	}
+	else
+		ch_print_usage();
 	return (0);
 }

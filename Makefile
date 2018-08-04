@@ -23,7 +23,7 @@ DIR_LIB_INC			=	$(DIR_LIB)includes/
 DIR_INC				=	./includes/
 DIR_PUSH_SWAP		=	./push_swap_src/
 DIR_CHECKER			=	./checker_src/
-DIR_SRC				=	./src/
+DIR_SRC				=	./shared_src/
 DIR_OBJ_PUSH_SWAP	= 	./push_swap_obj/
 DIR_OBJ_CHECKER		= 	./checker_obj/
 
