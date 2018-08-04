@@ -1,5 +1,7 @@
 checker
+checker.exe
 push_swap
+push_swap.exe
 checker_obj
 push_swap_obj
 libft/obj
