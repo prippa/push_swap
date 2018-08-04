@@ -5,7 +5,8 @@
  * The push_swap programme:
 That programme just take from argv Non-repetitive integer values,
 and prints in the stdout operations which will sort the stack.
-Challenge of this programme is to write a sort algorithm, which will sort the stack using a minimum of operations count.
+Challenge of this programme is to write a sort algorithm,
+which will sort the stack using the lowest possible number of operations.
 
  * The checker programme:
 Like push_swap takes Non-repetitive integer values.
