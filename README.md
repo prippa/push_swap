@@ -22,11 +22,11 @@ If stack at the end is sorted prints OK message otherwise KO.
 * **pb** : push b - take the first element at the top of a and put it at the top of b. Do nothing if a is empty.
 #### Rotate
 * **ra** : rotate a - shift up all elements of stack a by 1. The first element becomes the last one.
-* **rb** : rotate b - shift up all elements of stack b by 1. The first element becomes the last one
+* **rb** : rotate b - shift up all elements of stack b by 1. The first element becomes the last one.
 * **rr** : **ra** and **rb** at the same time.
 #### Reverse Rotate
-* **rra** : reverse rotate a - shift down all elements of stack a by 1. The flast element becomes the first one.
-* **rrb** : reverse rotate b - shift down all elements of stack b by 1. The flast element becomes the first one
+* **rra** : reverse rotate a - shift down all elements of stack a by 1. The last element becomes the first one.
+* **rrb** : reverse rotate b - shift down all elements of stack b by 1. The last element becomes the first one.
 * **rrr** : **rra** and **rrb** at the same time.
 
 ## Stack a and b
