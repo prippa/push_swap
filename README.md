@@ -1,6 +1,6 @@
 # push_swap
 ## Project from Algorithms branch in course 42
-### The goal of this project is wrote two programmes.
+### The goal of this project is write two programmes.
 
  * The push_swap programme:
 That programme just take from argv Non-repetitive integer values,
