@@ -1,5 +1,5 @@
 # push_swap
-## Project from Algorithms branch in course 42
+## Project from Algorithms branch in school 42
 ### The goal of this project is write two programmes.
 
  * The push_swap programme:
