@@ -15,6 +15,7 @@
 
 # include "libft.h"
 # include "ft_printf.h"
+# include <stdio.h>
 
 typedef enum	e_operations
 {
