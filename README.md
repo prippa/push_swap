@@ -39,11 +39,11 @@ If stack at the end is sorted prints OK message otherwise KO.
 ## Stack a and b
 Her i have doubly linked list.
 
-![](https://thumbs.gfycat.com/FlashyNeglectedAnemone-size_restricted.gif)
+![](https://github.com/prippa/my-projects-media/blob/main/push_swap/FlashyNeglectedAnemone-size_restricted.gif)
 
 a and b as start and end pointer of list.
 
-![](https://thumbs.gfycat.com/ShamelessHugeIcterinewarbler-size_restricted.gif)
+![](https://github.com/prippa/my-projects-media/blob/main/push_swap/ShamelessHugeIcterinewarbler-size_restricted.gif)
 
 ## checker programme flags
  * **-v**    : Visualizes how the stack was sorted when we already have the entire list of operations.
@@ -61,12 +61,12 @@ A="17 11 25 1 7 13 4 21 2 10 18 12 3 9 6 5 24 14 20 19 23 15 22 8 16";
 ```
 ./push_swap $A | ./checker -v -h -o -s -t $A
 ```
-![](https://thumbs.gfycat.com/ClutteredRaggedAttwatersprairiechicken-size_restricted.gif)
+![](https://github.com/prippa/my-projects-media/blob/main/push_swap/ClutteredRaggedAttwatersprairiechicken-size_restricted.gif)
 
 ## Debug mode. When you can sort stack by yourself using existing operations.
 ```
 ./checker -d -h -o -s -t 2 3 5 1 4
 ```
-![](https://thumbs.gfycat.com/ColorfulWildAustraliankestrel-size_restricted.gif)
+![](https://github.com/prippa/my-projects-media/blob/main/push_swap/ColorfulWildAustraliankestrel-size_restricted.gif)
 
 [more info](https://github.com/prippa/push_swap/blob/master/push_swap.en.pdf)
