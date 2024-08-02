@@ -39,11 +39,11 @@ If stack at the end is sorted prints OK message otherwise KO.
 ## Stack a and b
 Her i have doubly linked list.
 
-![](https://github.com/prippa/my-projects-media/blob/main/push_swap/FlashyNeglectedAnemone-size_restricted.gif)
+![](https://github.com/prippa/my-projects-media/blob/main/push_swap/FlashyNeglectedAnemone-size_restricted.png)
 
 a and b as start and end pointer of list.
 
-![](https://github.com/prippa/my-projects-media/blob/main/push_swap/ShamelessHugeIcterinewarbler-size_restricted.gif)
+![](https://github.com/prippa/my-projects-media/blob/main/push_swap/ShamelessHugeIcterinewarbler-size_restricted.png)
 
 ## checker programme flags
  * **-v**    : Visualizes how the stack was sorted when we already have the entire list of operations.
